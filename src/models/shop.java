@@ -14,28 +14,25 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(
             name = "getAllEmployees",
-            query = "SELECT s FROM shop AS s ORDER BY s.id DESC"
+            query = "SELECT s FROM Shop AS s ORDER BY s.id DESC"
             ),
     @NamedQuery(
             name = "getEmployeesCount",
-            query = "SELECT COUNT(s) FROM shop AS s"
+            query = "SELECT COUNT(s) FROM Shop AS s"
             ),
     @NamedQuery(
-            name = "checkRegisteredCode",
-            query = "SELECT COUNT(s) FROM shop AS s WHERE s.code = :code"
+            name = "checkRegisteredName",
+            query = "SELECT COUNT(s) FROM Shop AS s WHERE s.name = :name"
             ),
-
 })
 
 @Entity
-public class shop {
+public class Shop {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "code", nullable = false, unique = true)
-    private String code;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -59,14 +56,6 @@ public class shop {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public String getName() {
