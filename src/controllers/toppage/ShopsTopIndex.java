@@ -1,4 +1,4 @@
-package c.toppage;
+package controllers.toppage;
 
 import java.io.IOException;
 
@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ShopTopIndex
+ * Servlet implementation class ShopsTopIndex
  */
 @WebServlet("/index.html")
-public class ShopTopIndex extends HttpServlet {
+public class ShopsTopIndex extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShopTopIndex() {
+    public ShopsTopIndex() {
         super();
         // TODO Auto-generated constructor stub
     }

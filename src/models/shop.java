@@ -13,11 +13,11 @@ import javax.persistence.Table;
 @Table(name = "shops")
 @NamedQueries({
     @NamedQuery(
-            name = "getAllEmployees",
+            name = "getAllShops",
             query = "SELECT s FROM Shop AS s ORDER BY s.id DESC"
             ),
     @NamedQuery(
-            name = "getEmployeesCount",
+            name = "getShopsCount",
             query = "SELECT COUNT(s) FROM Shop AS s"
             ),
     @NamedQuery(
@@ -25,7 +25,6 @@ import javax.persistence.Table;
             query = "SELECT COUNT(s) FROM Shop AS s WHERE s.name = :name"
             ),
 })
-
 @Entity
 public class Shop {
     @Id
@@ -33,9 +32,14 @@ public class Shop {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
     @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "email", nullable = false)
+    private String email;
+
+    @Column(name = "denwa", nullable = false)
+    private Integer denwa;
 
     @Column(name = "password", length = 64, nullable = false)
     private String password;
@@ -47,7 +51,7 @@ public class Shop {
     private Integer area;
 
     @Lob
-    @Column(name = "info", nullable = false)
+    @Column(name = "info", nullable = true)
     private String info;
 
     public Integer getId() {
@@ -64,6 +68,22 @@ public class Shop {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getDenwa() {
+        return denwa;
+    }
+
+    public void setDenwa(Integer denwa) {
+        this.denwa = denwa;
     }
 
     public String getPassword() {
