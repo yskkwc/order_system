@@ -21,8 +21,31 @@ public class ShopValidetor {
         if(!password_error.equals("")) {
             errors.add(password_error);
         }
+
+        String email_error = _validateEmail(s.getEmail());
+        if(!email_error.equals("")) {
+            errors.add(email_error);
+        }
+
+        String denwa_error = _validateDenwa(s.getDenwa());
+        if(!denwa_error.equals("")) {
+            errors.add(denwa_error);
+        }
+
+        String address_error = _validateAddress(s.getAddress());
+        if(!address_error.equals("")) {
+            errors.add(address_error);
+        }
+
+        String area_error = _validateArea(s.getArea());
+        if(!area_error.equals("")) {
+            errors.add(area_error);
+        }
+
         return errors;
     }
+
+
 
     // 店舗名の入力チェック
     private static String _validateName(String name, Boolean name_duplicate_check_flag) {
@@ -50,4 +73,39 @@ public class ShopValidetor {
         }
         return "";
     }
+
+    private static String _validateEmail(String email) {
+        if (email == null || email.equals("")) {
+            return "メールアドレスを入力してください。";
+        }
+
+        return "";
+    }
+
+    private static String _validateDenwa(Integer denwa) {
+        if (denwa == null || denwa.equals("")) {
+            return "電話番号を入力してください。";
+        }
+
+        return "";
+    }
+
+    private static String _validateAddress(String address) {
+        if (address == null || address.equals("")) {
+            return "住所を入力してください。";
+        }
+
+        return "";
+    }
+
+    private static String _validateArea(Integer area) {
+        if (area == 0 || area.equals("")) {
+            /* option value = 0 */
+            return "近い地域を入力してください。";
+        }
+
+        return "";
+    }
+
+    // infoは空欄OKにしている（nullable = true)
 }
