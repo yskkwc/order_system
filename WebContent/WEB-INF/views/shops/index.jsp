@@ -7,15 +7,17 @@
         <c:out value="${flush}"></c:out>
       </div>
     </c:if>
-    <h2>サイト管理者用ログイン</h2>
-    <table id="shop_list">
-            <tbody>
+    <h2>サイト管理者ログイン</h2>
+    <table class="shop_list">
+              <thead>
                 <tr>
                     <th>店舗名</th>
                     <th>住所</th>
-                    <th>メール</th>
+                    <th>メールアドレス</th>
                     <th>電話番号</th>
                 </tr>
+              </thead>
+              <tbody>
                 <c:forEach var="shop" items="${shops}" varStatus="status">
                 <tr class="row${status.count % 2}">
                   <td><c:out value="${shop.name}" /></td>
@@ -24,7 +26,7 @@
                   <td><c:out value="${shop.denwa}" /></td>
                 </tr>
                 </c:forEach>
-            </tbody>
+              </tbody>
         </table>
         <div id="pagination">
             （全 ${shops_count} 件）<br />

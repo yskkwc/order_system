@@ -1,7 +1,8 @@
-package controllers.toppage;
+package controllers.shops;
 
 import java.io.IOException;
 
+import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,17 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Shop;
+import utils.DBUtil;
+
 /**
- * Servlet implementation class ShopsTopIndex
+ * Servlet implementation class ShopsEditServlet
  */
-@WebServlet("/shops/topindex")
-public class ShopsTopIndex extends HttpServlet {
+@WebServlet("/shops/edit")
+public class ShopsEditServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShopsTopIndex() {
+    public ShopsEditServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +32,17 @@ public class ShopsTopIndex extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/toppage/shopindex.jsp");
+        EntityManager em = DBUtil.createEntityManager();
+
+        Shop s = em.find(Shop.class, Integer.parseInt(request.getParameter("id")));
+
+        em.close();
+
+        request.setAttribute("shop", s);
+        request.setAttribute("_token", request.getSession().getId());
+        request.getSession().setAttribute("shop_id", s.getId());
+
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/shops/edit.jsp");
         rd.forward(request, response);
     }
 

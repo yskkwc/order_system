@@ -69,22 +69,22 @@ public class ShopValidetor {
     private static String _validatePassword(String password, Boolean password_check_flag) {
         // パスワードを変更する場合のみ実行
         if(password_check_flag && (password == null || password.equals(""))) {
-            return "パスワードを入力してください。";
+            return "「パスワード」を入力してください。";
         }
         return "";
     }
 
     private static String _validateEmail(String email) {
         if (email == null || email.equals("")) {
-            return "メールアドレスを入力してください。";
+            return "「メールアドレス」を入力してください。";
         }
 
         return "";
     }
 
-    private static String _validateDenwa(Integer denwa) {
+    private static String _validateDenwa(String denwa) {
         if (denwa == null || denwa.equals("")) {
-            return "電話番号を入力してください。";
+            return "「電話番号」を入力してください。";
         }
 
         return "";
@@ -92,7 +92,7 @@ public class ShopValidetor {
 
     private static String _validateAddress(String address) {
         if (address == null || address.equals("")) {
-            return "住所を入力してください。";
+            return "「住所」を入力してください。";
         }
 
         return "";
@@ -101,7 +101,7 @@ public class ShopValidetor {
     private static String _validateArea(Integer area) {
         if (area == 0 || area.equals("")) {
             /* option value = 0 */
-            return "近い地域を入力してください。";
+            return "「近い地域を選択してください」を押して近い地域を選んで下さい。";
         }
 
         return "";

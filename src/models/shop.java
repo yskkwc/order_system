@@ -21,8 +21,8 @@ import javax.persistence.Table;
             query = "SELECT COUNT(s) FROM Shop AS s"
             ),
     @NamedQuery(
-            name = "checkRegisteredName",
-            query = "SELECT COUNT(s) FROM Shop AS s WHERE s.name = :name"
+            name = "checkRegisteredNameAndPassword",
+            query = "SELECT COUNT(s) FROM Shop AS s WHERE s.name = :name AND s.password = :pass"
             ),
 })
 @Entity
@@ -39,7 +39,7 @@ public class Shop {
     private String email;
 
     @Column(name = "denwa", nullable = false)
-    private Integer denwa;
+    private String denwa;
 
     @Column(name = "password", length = 64, nullable = false)
     private String password;
@@ -78,11 +78,11 @@ public class Shop {
         this.email = email;
     }
 
-    public Integer getDenwa() {
+    public String getDenwa() {
         return denwa;
     }
 
-    public void setDenwa(Integer denwa) {
+    public void setDenwa(String denwa) {
         this.denwa = denwa;
     }
 
