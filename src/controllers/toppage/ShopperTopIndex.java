@@ -33,40 +33,35 @@ public class ShopperTopIndex extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     // DBに接続
+        // DBに接続
         EntityManager em = DBUtil.createEntityManager();
 
-        // "login_employee"を取り出す(LoginServletでセットしたやつ)
-        Shop login_shop = (Shop) request.getSession().getAttribute("login_shop");
-
-        int page;
-        try {
+        int page = 1;
+        try{
             page = Integer.parseInt(request.getParameter("page"));
-        } catch (Exception e) {
-            page = 1;
-        }
-        List<Shop> shops = em.createNamedQuery("getMyAllShops", Shop.class)
-                .setParameter("shop", login_shop)
-                .setFirstResult(15 * (page - 1))
-                .setMaxResults(15)
-                .getResultList();
+        } catch(NumberFormatException e) { }
+        List<Shop> shops = em.createNamedQuery("getAllShops", Shop.class)
+                                     .setFirstResult(15 * (page - 1))
+                                     .setMaxResults(15)
+                                     .getResultList();
 
-        long shops_count = (long) em.createNamedQuery("getMyShopsCount", Long.class)
-                .setParameter("shop", login_shop)
-                .getSingleResult();
+        long shops_count = (long)em.createNamedQuery("getShopsCount", Long.class)
+                                       .getSingleResult();
 
         em.close();
 
-        //"getMyAllReports" (Report rのEmployeeとDBのemployeeのr.id DESCが==)
+        //index.jspに上で取得したデータを送る
         request.setAttribute("shops", shops);
         request.setAttribute("shops_count", shops_count);
         request.setAttribute("page", page);
 
+        //フラッシュメッセージ
         if (request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
             request.getSession().removeAttribute("flush");
         }
 
+        //送り先の指定(リクエストスコープは受け/取る、一回まで)
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/toppage/shopindex.jsp");
         rd.forward(request, response);
     }

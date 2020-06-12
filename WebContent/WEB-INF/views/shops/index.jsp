@@ -7,7 +7,7 @@
         <c:out value="${flush}"></c:out>
       </div>
     </c:if>
-    <h2>サイト管理者ログイン</h2>
+    <h2>サイト管理者用ログイン</h2>
     <table class="shop_list">
               <thead>
                 <tr>
