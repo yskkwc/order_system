@@ -11,8 +11,19 @@
     <body>
         <div id="wrapper">
             <div id="header">
-                <h1>かんたん注文へようこそ！</h1>
+            <div id="header_menu">
+                <h1><a href="<c:url value='/' />">かんたん注文へようこそ！</a></h1>&nbsp;&nbsp;&nbsp;
+                <c:if test="${sessionScope.login_shop != null}">
+                    <a href="<c:url value='/shops/profile' />">お店の情報を編集する</a>&nbsp;
+                    <a href="<c:url value='/menu/new' />">メニューを追加する</a>&nbsp;
+                </c:if>
             </div>
+            <c:if test="${sessionScope.login_shop != null}">
+                <div id="employee_name">
+                <c:out value="${sessionScope.login_shop.name}" />&nbsp;さん&nbsp;&nbsp;&nbsp;
+                <a href="<c:url value='/logout' />">ログアウト</a>
+                </div>
+            </c:if>
             <div id="content">
                 ${param.content}
             </div>

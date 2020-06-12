@@ -8,19 +8,16 @@ body {
     height: 70px;
     background-color: #333333;
     width: 100%;
+    margin-bottom: 5px;
 }
 #content {
     width: 94%;
-    margin: 15px;
+    margin: 40px;
     padding-left: 3%;
 }
 h1 {
-    padding-top: 2%;
-    padding-left: 2%;
-    margin: 20px 10px;
-    font-size: 24px;
-    display: inline;
-    color: #24738e;
+  font-size: 24px;
+  display: inline;
 }
 h2 {
     font-size: 30px;
@@ -50,18 +47,18 @@ button {
 }
 #flush_success {
     width: 100%;
-    padding-top: 28px;
+    padding-top: 10px;
     padding-left: 2%;
-    padding-bottom: 28px;
+    padding-bottom: 10px;
     margin-bottom: 15px;
     color: #155724;
     background-color: #d4edda;
 }
 #flush_error {
     width: 100%;
-    padding-top: 28px;
+    padding-top: 10px;
     padding-left: 2%;
-    padding-bottom: 28px;
+    padding-bottom: 10px;
     margin-bottom: 15px;
     color: #721c24;
     background-color: #f8d7da;
@@ -84,4 +81,26 @@ table.shop_list td {
   width: 350px;
   padding: 10px;
   vertical-align: top;
+}
+#header_menu {
+    width: 57%;
+    padding-top: 17px;
+    padding-left: 3%;
+    display: inline-block;
+}
+
+#employee_name {
+    color: #cccccc;
+    width: 36%;
+    padding-right: 3%;
+    text-align: right;
+    display: inline-block;
+}
+
+#header a {
+    color: #eeeeee;
+}
+
+h1 a {
+    color: #eeeeee;
 }
