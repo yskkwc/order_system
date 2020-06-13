@@ -10,12 +10,12 @@
     </head>
     <body>
         <div id="wrapper">
-            <div id="header">
+          <div id="header">
             <div id="header_menu">
-                <h1><a href="<c:url value='/' />">かんたん注文へようこそ！</a></h1>&nbsp;&nbsp;&nbsp;
+                <h1><a href="<c:url value='/' />">かんたん注文</a></h1>&nbsp;&nbsp;&nbsp;
                 <c:if test="${sessionScope.login_shop != null}">
-                    <a href="<c:url value='/shops/profile' />">お店の情報を編集する</a>&nbsp;
-                    <a href="<c:url value='/menu/new' />">メニューを追加する</a>&nbsp;
+                    <a href="<c:url value='/shops/index' />">お店情報を編集</a>&nbsp;
+                    <a href="<c:url value='/menus/new' />">メニューを追加</a>&nbsp;
                 </c:if>
             </div>
             <c:if test="${sessionScope.login_shop != null}">
@@ -24,6 +24,7 @@
                 <a href="<c:url value='/logout' />">ログアウト</a>
                 </div>
             </c:if>
+          </div>
             <div id="content">
                 ${param.content}
             </div>

@@ -1,4 +1,4 @@
-package controllers.toppage;
+package controllers.menus;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Shop;
+import models.Menu;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class ShopperTopIndex
+ * Servlet implementation class MenusIndexServlet
  */
-@WebServlet("/shopper/topindex")
-public class ShopperTopIndex extends HttpServlet {
+@WebServlet("/index.html")
+public class MenusIndexServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShopperTopIndex() {
+    public MenusIndexServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,36 +33,33 @@ public class ShopperTopIndex extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // DBに接続
         EntityManager em = DBUtil.createEntityManager();
 
-        int page = 1;
+        int page;
         try{
             page = Integer.parseInt(request.getParameter("page"));
-        } catch(NumberFormatException e) { }
-        List<Shop> shops = em.createNamedQuery("getAllShops", Shop.class)
-                                     .setFirstResult(15 * (page - 1))
-                                     .setMaxResults(15)
-                                     .getResultList();
+        } catch(Exception e) {
+            page = 1;
+        }
+        List<Menu> menus = em.createNamedQuery("getAllMenus", Menu.class)
+                                  .setFirstResult(15 * (page - 1))
+                                  .setMaxResults(15)
+                                  .getResultList();
 
-        long shops_count = (long)em.createNamedQuery("getShopsCount", Long.class)
-                                       .getSingleResult();
+        long menus_count = (long)em.createNamedQuery("getMenusCount", Long.class)
+                                     .getSingleResult();
 
         em.close();
 
-        //index.jspに上で取得したデータを送る
-        request.setAttribute("shops", shops);
-        request.setAttribute("shops_count", shops_count);
+        request.setAttribute("menus", menus);
+        request.setAttribute("menus_count", menus_count);
         request.setAttribute("page", page);
-
-        //フラッシュメッセージ
-        if (request.getSession().getAttribute("flush") != null) {
+        if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
             request.getSession().removeAttribute("flush");
         }
 
-        //送り先の指定(リクエストスコープは受け/取る、一回まで)
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/toppage/shopindex.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/menus/index.jsp");
         rd.forward(request, response);
     }
 }

@@ -104,3 +104,25 @@ table.shop_list td {
 h1 a {
     color: #eeeeee;
 }
+
+table#menu_list {
+  width: 80%;
+
+}
+
+table#menu_list th {
+    font-weight: bold;
+    padding: 10px 2%;
+}
+
+table#menu_list .menu_name {
+    width: 30%;
+    padding: 10px 2%;
+}
+table#menu_list .menu_price {
+    width: 20%;
+}
+
+table#menu_list .menu_action {
+    width: 20%;
+}

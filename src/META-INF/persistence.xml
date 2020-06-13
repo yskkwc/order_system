@@ -3,6 +3,7 @@
 	<persistence-unit name="order_system" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>models.Shop</class>
+		<class>models.Menu</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/order_system?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
