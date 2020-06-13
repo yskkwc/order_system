@@ -28,6 +28,8 @@
         <br /><br />
 
         <h3>お店を新規登録する！</h3><br/>
-        <input type="button" onclick="<c:url value='/shops/new' />" value="新規登録"/>
+        <a href="<c:url value='/shops/new' />">
+        <button type="button">新規登録</button>
+        </a>
     </c:param>
 </c:import>

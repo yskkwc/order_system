@@ -17,10 +17,10 @@
                     <th class="menu_price">値段</th>
                     <th class="menu_action">操作</th>
                 </tr>
-                <c:forEach var="report" items="${reports}" varStatus="status">
+                <c:forEach var="menu" items="${menus}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="menu_name"><c:out value="${menu.name}" /></td>
-                        <td class="menu_price">${menu.price}</td>
+                        <td class="menu_price">${menu.price}円</td>
                         <td class="menu_action"><a href="<c:url value='/menus/show?id=${menu.id}' />">詳細を見る</a></td>
                     </tr>
                 </c:forEach>

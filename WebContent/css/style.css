@@ -126,3 +126,26 @@ table#menu_list .menu_price {
 table#menu_list .menu_action {
     width: 20%;
 }
+td.menu_price{
+  text-align: right;
+}
+td.menu_action{
+  text-align: center;
+}
+table.show_menu{
+  width: 45%;
+}
+td.show_menu{
+  width: 60%;
+}
+td.show_price{
+  width: 60%
+  text-align: right;
+}
+th.show_menu{
+  height: 70%;
+}
+
+pre {
+    font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
+}

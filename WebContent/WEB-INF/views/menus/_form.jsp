@@ -16,7 +16,7 @@
 <br /><br />
 
 <label for="price">値段</label><br />
-<input type="number" name="price" value="${menu.price}" />
+<input type="number" name="price" value="${menu.price}" />円
 <br /><br />
 
 <label for="content">Menuの説明</label><br />
