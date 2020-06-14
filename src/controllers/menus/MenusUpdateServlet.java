@@ -12,21 +12,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Menu;
-import models.Shop;
 import models.validators.MenuValidator;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class MenusCreateServlet
+ * Servlet implementation class MenusUpdateServlet
  */
-@WebServlet("/menus/create")
-public class MenusCreateServlet extends HttpServlet {
+@WebServlet("/menus/update")
+public class MenusUpdateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MenusCreateServlet() {
+    public MenusUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,37 +34,44 @@ public class MenusCreateServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String _token = (String)request.getParameter("_token");
-        if(_token != null && _token.equals(request.getSession().getId())) {
+     // edit.jspで参照してる_form.jsp内の"_token"
+        String _token = (String) request.getParameter("_token");
+
+        // 空チェック
+        if (_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            Menu m = new Menu();
-            m.setShop((Shop)request.getSession().getAttribute("login_shop"));
+            // DBへ"id"をInt型にして送り、この"id"の情報をupdateservletで受けて、mにしまう
+            Menu m = em.find(Menu.class, (Integer) (request.getSession().getAttribute("menu_id")));
 
             m.setName(request.getParameter("name"));
             m.setPrice(Integer.parseInt(request.getParameter("price")));
             m.setContent(request.getParameter("content"));
 
+            //値をsetした変数rをバリデーション に通す
             List<String> errors = MenuValidator.validate(m);
-            if(errors.size() > 0) {
+            if (errors.size() > 0) {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("menu", m);
+                request.setAttribute("report", m);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/menus/new.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/menus/edit.jsp");
                 rd.forward(request, response);
+
             } else {
                 em.getTransaction().begin();
-                em.persist(m);
                 em.getTransaction().commit();
                 em.close();
-                request.getSession().setAttribute("flush", "登録が完了しました。");
+                request.getSession().setAttribute("flush", "更新が完了しました。");
+
+                // セッションスコープを除外
+                request.getSession().removeAttribute("menu_id");
 
                 response.sendRedirect(request.getContextPath() + "/");
             }
+
         }
     }
-
 }

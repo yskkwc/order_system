@@ -24,7 +24,7 @@
                         </tr>
                     </tbody>
                 </table>
-            <p><a href="<c:url value="/menus/edit?id=${menu.id}" />">この日報を編集する</a></p>
+            <p><a href="<c:url value="/menus/edit?id=${menu.id}" />">このMenuを編集する</a></p>
             </c:when>
             <c:otherwise>
                 <h2>お探しのデータは見つかりませんでした。</h2>
