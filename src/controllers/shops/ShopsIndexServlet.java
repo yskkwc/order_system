@@ -35,17 +35,21 @@ public class ShopsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
+        Shop login_shop = (Shop) request.getSession().getAttribute("login_shop");
+
         int page = 1;
         try{
             page = Integer.parseInt(request.getParameter("page"));
         } catch(NumberFormatException e) { }
-        List<Shop> shops = em.createNamedQuery("getAllShops", Shop.class)
+        List<Shop> shops = em.createNamedQuery("getMyAllShops", Shop.class)
+                                     .setParameter("shop", login_shop)
                                      .setFirstResult(15 * (page - 1))
                                      .setMaxResults(15)
                                      .getResultList();
 
-        long shops_count = (long)em.createNamedQuery("getShopsCount", Long.class)
-                                       .getSingleResult();
+        long shops_count = (long)em.createNamedQuery("getMyShopsCount", Long.class)
+                                     .setParameter("shop", login_shop)
+                                     .getSingleResult();
 
         em.close();
 

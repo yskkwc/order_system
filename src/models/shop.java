@@ -24,11 +24,12 @@ import javax.persistence.Table;
             name = "checkRegisteredNameAndPassword",
             query = "SELECT s FROM Shop AS s WHERE s.name = :name AND s.password = :pass"
             ),
+
     @NamedQuery(name = "getMyAllShops", query = "SELECT s FROM Shop "
-            + "AS s WHERE s.id = :id ORDER BY s.id DESC"),
+            + "AS s WHERE s.name = :name ORDER BY s.id DESC"),
 
     @NamedQuery(name = "getMyShopsCount", query = "SELECT COUNT(s) FROM Shop "
-            + "AS s WHERE s.id = :id"),
+            + "AS s WHERE s.name = :name"),
 })
 
 @Entity

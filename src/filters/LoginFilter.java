@@ -48,7 +48,7 @@ public class LoginFilter implements Filter {
             // セッションスコープに保存されたユーザ情報を取得
             Shop s = (Shop)session.getAttribute("login_shop");
 
-            if(!servlet_path.equals("/login")) {
+            if(!servlet_path.equals("/login") && !servlet_path.equals("/shops/new")) {
                 // ログイン画面以外について
                 // ログアウトしている状態であれば
                 // ログイン画面にリダイレクト

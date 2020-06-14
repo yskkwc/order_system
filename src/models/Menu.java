@@ -21,6 +21,10 @@ import javax.persistence.Table;
             name = "getMenusCount",
             query = "SELECT COUNT(m) FROM Menu AS m"
             ),
+    @NamedQuery(name = "getMyAllMenus", query = "SELECT m FROM Menu AS m WHERE m.shop "
+            + "= :shop ORDER BY m.id DESC"),
+    @NamedQuery(name = "getMyMenusCount", query = "SELECT COUNT(m) FROM Menu AS m WHERE m.shop "
+            + "= :shop"),
 })
 @Entity
 
