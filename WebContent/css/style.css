@@ -135,17 +135,37 @@ td.menu_action{
 table.show_menu{
   width: 45%;
 }
-td.show_menu{
-  width: 60%;
+table.show_menu th{
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  background: #3f3f3f;
+  color: #ffffff;
 }
-td.show_price{
-  width: 60%
-  text-align: right;
-}
-th.show_menu{
-  height: 70%;
+table.show_memu td{
+  width: 150px;
+  padding: 10px;
+  vertical-align: top;
 }
 
 pre {
     font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
 }
+
+table.usershop_list{
+
+}
+table.usershop_list th{
+  width: 150px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  background: #3f3f3f;
+  color: #ffffff;
+}
+table.usershop_list td{
+  width: 150px;
+  padding: 10px;
+  vertical-align: top;
+  }

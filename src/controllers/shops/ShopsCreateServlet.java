@@ -52,6 +52,7 @@ public class ShopsCreateServlet extends HttpServlet {
             s.setDenwa(request.getParameter("denwa"));
             s.setAddress(request.getParameter("address"));
             s.setArea(Integer.parseInt(request.getParameter("area")));
+            s.setInfo(request.getParameter("info"));
 
           //値をsetした変数rをバリデーション に通す
             List<String> errors = ShopValidetor.validate(s, true, true);
@@ -68,14 +69,15 @@ public class ShopsCreateServlet extends HttpServlet {
                 rd.forward(request, response);
             } else {
                 // DBの処理を進める
+
                 em.getTransaction().begin();
                 em.persist(s);
                 em.getTransaction().commit();
                 em.close();
-                request.getSession().setAttribute("flush", "登録が完了しました。");
+                request.getSession().setAttribute("flush", "登録が完了しました。ログインしてください");
 
                 // リダイヤル index.jspへ。
-                response.sendRedirect(request.getContextPath() + "/shops/index");
+                response.sendRedirect(request.getContextPath() + "/login");
             }
         }
     }

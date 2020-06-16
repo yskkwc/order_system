@@ -1,4 +1,4 @@
-package controllers.shops;
+package controllers.orders;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,16 +15,16 @@ import models.Shop;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class ShopsIndexServlet
+ * Servlet implementation class OrdersShopServlet
  */
-@WebServlet("/shops/index")
-public class ShopsIndexServlet extends HttpServlet {
+@WebServlet("/orders/shop")
+public class OrdersShopServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShopsIndexServlet() {
+    public OrdersShopServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,20 +35,17 @@ public class ShopsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        Shop login_shop = (Shop) request.getSession().getAttribute("login_shop");
-
         int page = 1;
         try{
             page = Integer.parseInt(request.getParameter("page"));
         } catch(NumberFormatException e) { }
-        List<Shop> shops = em.createNamedQuery("getMyAllShops", Shop.class)
-                                     .setParameter("id", login_shop.getId())
+        List<Shop> shops = em.createNamedQuery("getAllShops", Shop.class)
                                      .setFirstResult(15 * (page - 1))
                                      .setMaxResults(15)
                                      .getResultList();
 
-        long shops_count = (long)em.createNamedQuery("getMyShopsCount", Long.class)
-                                     .setParameter("id", login_shop.getId())
+        long shops_count = (long)em.createNamedQuery("getShopsCount", Long.class)
+
                                      .getSingleResult();
 
         em.close();
@@ -65,7 +62,7 @@ public class ShopsIndexServlet extends HttpServlet {
         }
 
         //送り先の指定(リクエストスコープは受け/取る、一回まで)
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/shops/index.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/orders/shopindex.jsp");
         rd.forward(request, response);
     }
 }
