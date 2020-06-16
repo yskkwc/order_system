@@ -11,21 +11,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Shop;
+import models.Admin;
 import utils.DBUtil;
 import utils.EncryptUtil;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class AdminLoginServlet
  */
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/admin/login")
+public class AdminLoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public AdminLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,22 +42,22 @@ public class LoginServlet extends HttpServlet {
             request.getSession().removeAttribute("flush");
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login/adminlogin.jsp");
         rd.forward(request, response);
     }
+
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
-    // ログイン処理を実行
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 認証結果を格納する変数
+     // 認証結果を格納する変数
         Boolean check_result = false;
 
         String name = request.getParameter("name");
         String plain_pass = request.getParameter("password");
 
-        Shop s = null;
+        Admin a = null;
 
         if(name != null && !name.equals("") && plain_pass != null && !plain_pass.equals("")) {
             EntityManager em = DBUtil.createEntityManager();
@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 
             // 社員番号とパスワードが正しいかチェックする
             try {
-                s = em.createNamedQuery("checkRegisteredNameAndPassword", Shop.class)
+                a = em.createNamedQuery("checkAdminRegisteredNameAndPassword", Admin.class)
                       .setParameter("name", name)
                       .setParameter("pass", password)
                       .getSingleResult();
@@ -77,7 +77,7 @@ public class LoginServlet extends HttpServlet {
 
             em.close();
 
-            if(s != null) {
+            if(a != null) {
                 check_result = true;
             }
         }
@@ -88,14 +88,14 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("hasError", true);
             request.setAttribute("name", name);
 
-            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login/adminlogin.jsp");
             rd.forward(request, response);
         } else {
             // 認証できたらログイン状態にしてトップページへリダイレクト
-            request.getSession().setAttribute("login_shop", s);
+            request.getSession().setAttribute("login_admin", a);
 
             request.getSession().setAttribute("flush", "ログインしました。");
-            response.sendRedirect(request.getContextPath() + "/menus/index");
+            response.sendRedirect(request.getContextPath() + "/admin/index");
         }
     }
 }

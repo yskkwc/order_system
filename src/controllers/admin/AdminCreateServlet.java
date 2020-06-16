@@ -1,4 +1,4 @@
-package controllers.menus;
+package controllers.admin;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,22 +11,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Menu;
-import models.Shop;
-import models.validators.MenuValidator;
+import models.Admin;
+import models.validators.AdminValidator;
 import utils.DBUtil;
+import utils.EncryptUtil;
 
 /**
- * Servlet implementation class MenusCreateServlet
+ * Servlet implementation class AdminCreateServlet
  */
-@WebServlet("/menus/create")
-public class MenusCreateServlet extends HttpServlet {
+@WebServlet("/admin/create")
+public class AdminCreateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MenusCreateServlet() {
+    public AdminCreateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,31 +39,39 @@ public class MenusCreateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            Menu m = new Menu();
-            m.setShop((Shop)request.getSession().getAttribute("login_shop"));
+            Admin a = new Admin();
 
-            m.setName(request.getParameter("name"));
-            m.setPrice(Integer.parseInt(request.getParameter("price")));
-            m.setContent(request.getParameter("content"));
+            a.setName(request.getParameter("name"));
+            a.setPassword(
+                    EncryptUtil.getPasswordEncrypt(
+                            request.getParameter("password"),
+                            (String)this.getServletContext().getAttribute("salt")
+                            )
+                    );
 
-            List<String> errors = MenuValidator.validate(m);
-            if(errors.size() > 0) {
+          //値をsetした変数rをバリデーション に通す
+            List<String> errors = AdminValidator.validate(a, true);
+            // エラーが検出されればDB閉じて値はs="shop",エラー情報はerrors="errors"
+            // getId()は"_token"にしてnew.jspに返す
+            if (errors.size() > 0) {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("menu", m);
+                request.setAttribute("admin", a);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/menus/new.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/admin/new.jsp");
                 rd.forward(request, response);
             } else {
+                // DBの処理を進める
                 em.getTransaction().begin();
-                em.persist(m);
+                em.persist(a);
                 em.getTransaction().commit();
                 em.close();
                 request.getSession().setAttribute("flush", "登録が完了しました。");
 
-                response.sendRedirect(request.getContextPath() + "/menus/index");
+                // リダイヤル index.jspへ。
+                response.sendRedirect(request.getContextPath() + "/admin/index");
             }
         }
     }

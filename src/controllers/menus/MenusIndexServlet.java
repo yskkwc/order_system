@@ -18,7 +18,7 @@ import utils.DBUtil;
 /**
  * Servlet implementation class MenusIndexServlet
  */
-@WebServlet("/index.html")
+@WebServlet("/menus/index")
 public class MenusIndexServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

@@ -36,7 +36,6 @@ public class ShopsIndexServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
 
         Shop login_shop = (Shop) request.getSession().getAttribute("login_shop");
-
         int page = 1;
         try{
             page = Integer.parseInt(request.getParameter("page"));
@@ -48,7 +47,7 @@ public class ShopsIndexServlet extends HttpServlet {
                                      .getResultList();
 
         long shops_count = (long)em.createNamedQuery("getMyShopsCount", Long.class)
-                                     .setParameter("shop", login_shop)
+
                                      .getSingleResult();
 
         em.close();

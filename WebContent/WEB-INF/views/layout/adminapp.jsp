@@ -13,14 +13,13 @@
           <div id="header">
             <div id="header_menu">
                 <h1><a href="<c:url value='/' />">かんたん注文</a></h1>&nbsp;&nbsp;&nbsp;
-                <c:if test="${sessionScope.login_shop != null}">
-                    <a href="<c:url value='/shops/index' />">お店情報を編集</a>&nbsp;
-                    <a href="<c:url value='/menus/new' />">メニューを追加</a>&nbsp;
+                <c:if test="${sessionScope.login_admin != null}">
+                    <a href="<c:url value='/admin/new' />">新規管理者を登録</a>&nbsp;
                 </c:if>
             </div>
-            <c:if test="${sessionScope.login_shop != null}">
-                <div id="employee_name">
-                <c:out value="${sessionScope.login_shop.name}" />&nbsp;さん&nbsp;&nbsp;&nbsp;
+            <c:if test="${sessionScope.login_admin != null}">
+                <div id="admin_name">
+                <c:out value="${sessionScope.login_admin.name}" />&nbsp;さん&nbsp;&nbsp;&nbsp;
                 <a href="<c:url value='/logout' />">ログアウト</a>
                 </div>
             </c:if>

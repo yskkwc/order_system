@@ -1,18 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:import url="../layout/app.jsp">
+<c:import url="../layout/adminapp.jsp">
   <c:param name="content">
     <c:if test="${flush != null}">
       <div id="flush_success">
         <c:out value="${flush}"></c:out>
       </div>
     </c:if>
-    <h2>お店のページ</h2>
+    <h2>登録店舗情報</h2>
     <table class="shop_list">
               <thead>
                 <tr>
                     <th>店舗名</th>
-                    <th>住所</th>
                     <th>メールアドレス</th>
                     <th>電話番号</th>
                 </tr>
@@ -21,7 +20,6 @@
                 <c:forEach var="shop" items="${shops}" varStatus="status">
                 <tr class="row${status.count % 2}">
                   <td><c:out value="${shop.name}" /></td>
-                  <td><c:out value="${shop.address}" /></td>
                   <td><c:out value="${shop.email}" /></td>
                   <td><c:out value="${shop.denwa}" /></td>
                 </tr>
@@ -41,6 +39,5 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='/menus/new' />">メニューを登録する</a></p>
   </c:param>
 </c:import>

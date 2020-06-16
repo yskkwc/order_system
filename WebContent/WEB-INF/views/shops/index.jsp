@@ -41,6 +41,5 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='/shops/new' />">テスト用アカウントの作成</a></p>
   </c:param>
 </c:import>

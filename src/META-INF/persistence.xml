@@ -4,6 +4,7 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>models.Shop</class>
 		<class>models.Menu</class>
+		<class>models.Admin</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/order_system?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>

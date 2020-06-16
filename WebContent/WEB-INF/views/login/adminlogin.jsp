@@ -4,7 +4,7 @@
     <c:param name="content">
         <c:if test="${hasError}">
             <div id="flush_error">
-                お店の登録名かパスワードが間違っています。
+                名前かパスワードが間違っています。
             </div>
         </c:if>
         <c:if test="${flush != null}">
@@ -12,9 +12,9 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>お店のログイン</h2>
-        <form method="POST" action="<c:url value='/login' />">
-            <label for="name">お店の登録名</label><br />
+        <h2>管理者ログイン</h2>
+        <form method="POST" action="<c:url value='/admin/login' />">
+            <label for="name">名前</label><br />
             <input type="text" name="name" value="${name}" />
             <br /><br />
 
@@ -26,10 +26,5 @@
             <button type="submit">ログイン</button>
         </form>
         <br /><br />
-
-        <h3>お店を新規登録する！</h3><br/>
-        <a href="<c:url value='/shops/new' />">
-        <button type="button">新規登録</button>
-        </a>
     </c:param>
 </c:import>

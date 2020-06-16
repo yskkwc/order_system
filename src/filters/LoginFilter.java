@@ -46,14 +46,16 @@ public class LoginFilter implements Filter {
             HttpSession session = ((HttpServletRequest)request).getSession();
 
             // セッションスコープに保存されたユーザ情報を取得
+
             Shop s = (Shop)session.getAttribute("login_shop");
 
-            if(!servlet_path.equals("/login") && !servlet_path.equals("/shops/new")) {
+            if(!servlet_path.equals("/login") && !servlet_path.equals("/shops/new") && !servlet_path.equals("/admin/login")) {
                 // ログイン画面以外について
                 // ログアウトしている状態であれば
                 // ログイン画面にリダイレクト
                 if(s == null) {
                     ((HttpServletResponse)response).sendRedirect(context_path + "/login");
+
                     return;
                 }
 
@@ -62,10 +64,13 @@ public class LoginFilter implements Filter {
                 // ログインしているのにログイン画面を表示させようとした場合は
                 // システムのトップページにリダイレクト
                 if(s != null) {
-                    ((HttpServletResponse)response).sendRedirect(context_path + "/");
+                    ((HttpServletResponse)response).sendRedirect(context_path + "/menus/index");
+
                     return;
                 }
+
             }
+
         }
 
         chain.doFilter(request, response);

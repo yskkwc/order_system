@@ -1,4 +1,4 @@
-package controllers.toppage;
+package controllers.admin;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,16 +15,16 @@ import models.Shop;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class ShopperTopIndex
+ * Servlet implementation class AdminIndexServlet
  */
-@WebServlet("/shopper/topindex")
-public class ShopperTopIndex extends HttpServlet {
+@WebServlet("/admin/index")
+public class AdminIndexServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShopperTopIndex() {
+    public AdminIndexServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +33,6 @@ public class ShopperTopIndex extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // DBに接続
         EntityManager em = DBUtil.createEntityManager();
 
         int page = 1;
@@ -46,7 +45,7 @@ public class ShopperTopIndex extends HttpServlet {
                                      .getResultList();
 
         long shops_count = (long)em.createNamedQuery("getShopsCount", Long.class)
-                                       .getSingleResult();
+                                     .getSingleResult();
 
         em.close();
 
@@ -62,7 +61,9 @@ public class ShopperTopIndex extends HttpServlet {
         }
 
         //送り先の指定(リクエストスコープは受け/取る、一回まで)
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/toppage/shopindex.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/admin/index.jsp");
         rd.forward(request, response);
     }
+
+
 }
