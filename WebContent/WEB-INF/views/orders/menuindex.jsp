@@ -15,13 +15,11 @@
         <table id="menu_list">
             <tbody>
                 <tr>
-
                     <th class="menu_name">メニュー名</th>
                     <th class="menu_price">値段</th>
-                    <th class="order_number">個数選択</th>
-                    <th class="order_menu">注文選択</th>
+                    <th class="menu_price">個数</th>
+                    <th class="order_menu">選択</th>
                 </tr>
-
                 <c:forEach var="menu" items="${menus}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="menu_name"><c:out value="${menu.name}" /></td>
@@ -33,7 +31,6 @@
             </tbody>
         </table>
         <br />
-        <input type="submit" VALUE="注文確認画面へすすむ">
         </form>
 
         <div id="pagination">
