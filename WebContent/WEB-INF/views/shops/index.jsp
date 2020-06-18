@@ -18,12 +18,15 @@
         <tr class="row${status.count % 2}">
         <th>メールアドレス</th>
         <td><c:out value="${shop.email}" /></td>
+        </tr>
         <tr class="row${status.count % 2}">
         <th>電話番号</th>
         <td><c:out value="${shop.denwa}" /></td>
+        </tr>
         <tr class="row${status.count % 2}">
         <th>住所</th>
         <td><c:out value="${shop.address}" /></td>
+        </tr>
         <tr class="row${status.count % 2}">
         <th>エリア</th>
         <td>
@@ -43,9 +46,15 @@
         <c:out value="竹の塚エリア" />
         </c:if>
         </td>
+        </tr>
         <tr class="row${status.count % 2}">
         <th>情報</th>
-        <td><c:out value="${shop.info}" /></td>
+        <td><pre><c:out value="${shop.info}" /></pre></td>
+        </tr>
+        <tr class="row${status.count % 2}">
+        <th>編集</th>
+        <td><a href="<c:url value='/shops/edit?id=${shop.id}'/>">お店情報を編集する</a>&nbsp;</td>
+        </tr>
         </c:forEach>
         </tbody>
     </table>
@@ -62,7 +71,7 @@
                     </c:otherwise>
                 </c:choose>
             </c:forEach>
-        </div>
+        </div><br />
         <a href="<c:url value='/menus/index' />">メニュー一覧へ戻る</a>&nbsp;
   </c:param>
 </c:import>

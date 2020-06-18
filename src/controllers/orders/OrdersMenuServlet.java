@@ -40,19 +40,20 @@ public class OrdersMenuServlet extends HttpServlet {
             Shop s = em.find(Shop.class, Integer.parseInt(request.getParameter("id")));
 
             int page;
+
             try{
                 page = Integer.parseInt(request.getParameter("page"));
             } catch(Exception e) {
                 page = 1;
             }
             List<Menu> menus = em.createNamedQuery("getOrderMenus", Menu.class)
-                                      .setParameter("shop", s.getId())
+                                      .setParameter("shop", s)
                                       .setFirstResult(15 * (page - 1))
                                       .setMaxResults(15)
                                       .getResultList();
 
             long menus_count = (long)em.createNamedQuery("getOrdersCount", Long.class)
-                                        .setParameter("shop", s.getId())
+                                        .setParameter("shop", s)
                                         .getSingleResult();
 
             em.close();

@@ -70,13 +70,13 @@ table, th, td {
 }
 
 table.shop_list {
-  width: 200px;
+  width: 80%;
   padding: 10px;
   vertical-align: top;
 }
 
 table.shop_list th{
-    width: 150px;
+  width: 20%;
   padding: 10px;
   font-weight: bold;
   vertical-align: top;
@@ -86,9 +86,9 @@ table.shop_list th{
 
 table.shop_list td{
 
-  width: 150px;
+  width: 40%;
   padding: 10px;
-  vertical-align: center;
+  vertical-align: middle;
 }
 
 #header_menu {
@@ -177,30 +177,4 @@ table.usershop_list td{
   width: 150px;
   padding: 10px;
   vertical-align: top;
-  }
-.tbl-r06 tr:nth-child(even) {
-  background: #fbf5f5;
-}
-.tbl-r06 td {
-  border: none;
-}
-.tbl-r06 .last {
-  border-bottom: solid 1px #ccc;
-}
-@media screen and (max-width: 640px) {
-  .tbl-r06 {
-    width: 80%;
-  }
-  .tbl-r06 .thead {
-    display: none;
-  }
-  .tbl-r06 td {
-    display: inline-block;
-  }
-  .tbl-r06 span {
-    font-weight: bold;
-  }
-  .tbl-r06 .last {
-    border-bottom: none;
-  }
 }

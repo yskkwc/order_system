@@ -11,7 +11,7 @@
     </div>
 </c:if>
 
-<label for="name">Menu名</label><br />
+<label for="name">メニュー名</label><br />
 <input type="text" name="name" value="${menu.name}" />
 <br /><br />
 
@@ -19,7 +19,7 @@
 <input type="number" name="price" value="${menu.price}" />円
 <br /><br />
 
-<label for="content">Menuの説明</label><br />
+<label for="content">メニューの説明</label><br />
 <textarea name="content" rows="10" cols="50">${menu.content}</textarea>
 <br /><br />
 

@@ -38,7 +38,7 @@
                   <td><c:out value="${shop.name}" /></td>
                   <td><c:out value="${shop.info}" /></td>
                   <td class="report_action"><a
-                  href="<c:url value='/orders/menu?id=${shop.id}' />">メニューを見る</a></td>
+                  href="<c:url value='/orders/menu?id=${shop.id}' />">このお店のメニューを見る</a></td>
                 </tr>
                 </c:forEach>
               </tbody>
