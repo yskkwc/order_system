@@ -37,6 +37,12 @@ public class ShopsIndexServlet extends HttpServlet {
 
         Shop login_shop = (Shop) request.getSession().getAttribute("login_shop");
 
+        if(login_shop == null){
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
+            rd.forward(request, response);
+
+        }else{
+
         int page = 1;
         try{
             page = Integer.parseInt(request.getParameter("page"));
@@ -68,4 +74,5 @@ public class ShopsIndexServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/shops/index.jsp");
         rd.forward(request, response);
     }
+}
 }

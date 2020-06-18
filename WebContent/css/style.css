@@ -69,19 +69,28 @@ table, th, td {
   line-height: 1.5;
 }
 
-table.shop_list th {
-  width: 150px;
+table.shop_list {
+  width: 200px;
+  padding: 10px;
+  vertical-align: top;
+}
+
+table.shop_list th{
+    width: 150px;
   padding: 10px;
   font-weight: bold;
   vertical-align: top;
   background: #3f3f3f;
   color: #ffffff;
 }
-table.shop_list td {
-  width: 350px;
+
+table.shop_list td{
+
+  width: 150px;
   padding: 10px;
-  vertical-align: top;
+  vertical-align: center;
 }
+
 #header_menu {
     width: 57%;
     padding-top: 17px;
@@ -169,3 +178,29 @@ table.usershop_list td{
   padding: 10px;
   vertical-align: top;
   }
+.tbl-r06 tr:nth-child(even) {
+  background: #fbf5f5;
+}
+.tbl-r06 td {
+  border: none;
+}
+.tbl-r06 .last {
+  border-bottom: solid 1px #ccc;
+}
+@media screen and (max-width: 640px) {
+  .tbl-r06 {
+    width: 80%;
+  }
+  .tbl-r06 .thead {
+    display: none;
+  }
+  .tbl-r06 td {
+    display: inline-block;
+  }
+  .tbl-r06 span {
+    font-weight: bold;
+  }
+  .tbl-r06 .last {
+    border-bottom: none;
+  }
+}

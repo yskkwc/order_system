@@ -9,25 +9,47 @@
     </c:if>
     <h2>お店の登録情報</h2>
     <table class="shop_list">
-              <thead>
-                <tr>
-                    <th>店舗名</th>
-                    <th>住所</th>
-                    <th>メールアドレス</th>
-                    <th>電話番号</th>
-                </tr>
-              </thead>
-              <tbody>
-                <c:forEach var="shop" items="${shops}" varStatus="status">
-                <tr class="row${status.count % 2}">
-                  <td><c:out value="${shop.name}" /></td>
-                  <td><c:out value="${shop.address}" /></td>
-                  <td><c:out value="${shop.email}" /></td>
-                  <td><c:out value="${shop.denwa}" /></td>
-                </tr>
-                </c:forEach>
-              </tbody>
-        </table>
+        <tbody>
+        <c:forEach var="shop" items="${shops}" varStatus="status">
+        <tr class="row${status.count % 2}">
+        <th>店舗名</th>
+        <td><c:out value="${shop.name}" /></td>
+        </tr>
+        <tr class="row${status.count % 2}">
+        <th>メールアドレス</th>
+        <td><c:out value="${shop.email}" /></td>
+        <tr class="row${status.count % 2}">
+        <th>電話番号</th>
+        <td><c:out value="${shop.denwa}" /></td>
+        <tr class="row${status.count % 2}">
+        <th>住所</th>
+        <td><c:out value="${shop.address}" /></td>
+        <tr class="row${status.count % 2}">
+        <th>エリア</th>
+        <td>
+        <c:if test="${shop.area == 1}">
+        <c:out value="千住エリア" />
+        </c:if>
+        <c:if test="${shop.area == 2}">
+        <c:out value="綾瀬エリア" />
+        </c:if>
+        <c:if test="${shop.area == 3}">
+        <c:out value="六町エリア" />
+        </c:if>
+        <c:if test="${shop.area == 4}">
+        <c:out value="梅島エリア" />
+        </c:if>
+        <c:if test="${shop.area == 5}">
+        <c:out value="竹の塚エリア" />
+        </c:if>
+        </td>
+        <tr class="row${status.count % 2}">
+        <th>情報</th>
+        <td><c:out value="${shop.info}" /></td>
+        </c:forEach>
+        </tbody>
+    </table>
+<br/>
         <div id="pagination">
             （全 ${shops_count} 件）<br />
             <c:forEach var="i" begin="1" end="${((shops_count - 1) / 15) + 1}" step="1">
@@ -41,5 +63,6 @@
                 </c:choose>
             </c:forEach>
         </div>
+        <a href="<c:url value='/menus/index' />">メニュー一覧へ戻る</a>&nbsp;
   </c:param>
 </c:import>

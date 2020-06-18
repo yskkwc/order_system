@@ -43,14 +43,14 @@ public class LoginFilter implements Filter {
         String servlet_path = ((HttpServletRequest)request).getServletPath();
 
         // CSSフォルダ内は認証処理から除外する
-        if(!servlet_path.matches("/css.*") && !servlet_path.matches("/.*") && !servlet_path.matches("/orders.*")) {
+        if(!servlet_path.matches("/css.*") && !servlet_path.matches("/orders.*")&& !servlet_path.matches("/.*")) {
             HttpSession session = ((HttpServletRequest)request).getSession();
 
             // セッションスコープに保存されたユーザ情報を取得
 
             Shop s = (Shop)session.getAttribute("login_shop");
 
-            if(!servlet_path.equals("/login") && !servlet_path.equals("/shops/new") && !servlet_path.equals("/admin/login")) {
+            if(!servlet_path.equals("/login") && !servlet_path.equals("/shops/new") && !servlet_path.equals("/shops/create")) {
                 // ログイン画面以外について
                 // ログアウトしている状態であれば
                 // ログイン画面にリダイレクト
