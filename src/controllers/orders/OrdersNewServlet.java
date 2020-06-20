@@ -36,6 +36,7 @@ public class OrdersNewServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
 
         Menu m = em.find(Menu.class, Integer.parseInt(request.getParameter("id")));
+        request.getSession().setAttribute("menu_id", m);
 
         em.close();
 

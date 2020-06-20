@@ -38,6 +38,7 @@ public class OrdersMenuServlet extends HttpServlet {
             EntityManager em = DBUtil.createEntityManager();
 
             Shop s = em.find(Shop.class, Integer.parseInt(request.getParameter("id")));
+            request.getSession().setAttribute("shop_id", s);
 
             int page;
 

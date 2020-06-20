@@ -12,7 +12,12 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>お店のログイン</h2>
+        <h2>注文ページへすすむ</h2><br/>
+        <a href="<c:url value='/orders/shop' />">
+        <button type="button">注文する</button>
+        </a><br /><br /><br /><br /><br />
+
+        <h2>お店オーナー様ログインページへすすむ</h2>
         <form method="POST" action="<c:url value='/login' />">
             <label for="name">お店の登録名</label><br />
             <input type="text" name="name" value="${name}" />

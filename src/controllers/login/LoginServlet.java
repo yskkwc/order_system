@@ -95,7 +95,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("login_shop", s);
 
             request.getSession().setAttribute("flush", "ログインしました。");
-            response.sendRedirect(request.getContextPath() + "/menus/index");
+            response.sendRedirect(request.getContextPath() + "/");
         }
     }
 }

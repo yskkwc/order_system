@@ -1,6 +1,6 @@
 package models;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +23,11 @@ import javax.persistence.Table;
             name = "getAllOrdersCount",
             query = "SELECT COUNT(o) FROM Menu AS o"
             ),
+    @NamedQuery(name = "getMyAllOrdersReceive", query = "SELECT o FROM Order AS o WHERE o.shop "
+            + "= :shop ORDER BY o.id DESC"),
+
+    @NamedQuery(name = "getMyOrdersReceiveCount", query = "SELECT COUNT(o) FROM Order AS o WHERE o.shop "
+            + "= :shop"),
 })
 @Entity
 public class Order {
@@ -33,7 +38,7 @@ public class Order {
     private Integer id;
 
     @Column(name = "order_date", nullable = false)
-    private Date order_date;
+    private Timestamp order_date;
 
     @ManyToOne
     @JoinColumn(name = "menu_id", nullable = false)
@@ -43,6 +48,18 @@ public class Order {
     @JoinColumn(name = "shop_id", nullable = false)
     private Shop shop;
 
+    @Column(name = "number", nullable = false)
+    private Integer number;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "address", nullable = false)
+    private String address;
+
+    @Column(name = "denwa", nullable = false)
+    private String denwa;
+
     public Integer getId() {
         return id;
     }
@@ -51,11 +68,11 @@ public class Order {
         this.id = id;
     }
 
-    public Date getOrder_date() {
+    public Timestamp getOrder_date() {
         return order_date;
     }
 
-    public void setOrder_date(Date order_date) {
+    public void setOrder_date(Timestamp order_date) {
         this.order_date = order_date;
     }
 
@@ -73,6 +90,38 @@ public class Order {
 
     public void setShop(Shop shop) {
         this.shop = shop;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDenwa() {
+        return denwa;
+    }
+
+    public void setDenwa(String denwa) {
+        this.denwa = denwa;
     }
 
 }

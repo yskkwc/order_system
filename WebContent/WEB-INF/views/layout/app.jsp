@@ -12,11 +12,11 @@
         <div id="wrapper">
           <div id="header">
             <div id="header_menu">
-                <h1><a href="<c:url value='/' />">かんたん注文</a></h1>&nbsp;&nbsp;&nbsp;
+                <h1><a href="<c:url value='/orders/Top' />">かんたん注文</a></h1>&nbsp;&nbsp;&nbsp;
                 <c:if test="${sessionScope.login_shop != null}">
                     <a href="<c:url value='/shops/index' />">お店情報</a>&nbsp;
                     <a href="<c:url value='/menus/new' />">メニュー追加</a>&nbsp;
-                    <a href="<c:url value='/orders/order'/>">受注確認</a>
+                    <a href="<c:url value='/orders/receive'/>">受注確認</a>
                 </c:if>
             </div>
             <c:if test="${sessionScope.login_shop != null}">
