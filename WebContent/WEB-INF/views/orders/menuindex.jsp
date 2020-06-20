@@ -11,28 +11,23 @@
         </c:if>
         <h1>お店のページ</h1><br />
         <h2>メニュー一覧</h2>
-        <form method="GET" action="<c:url value='/orders/index' />">
         <table id="menu_list">
             <tbody>
                 <tr>
                     <th class="menu_name">メニュー名</th>
                     <th class="menu_price">値段</th>
-                    <th class="menu_price">個数</th>
-                    <th class="order_menu">選択</th>
+                    <th class="menu_choice">選択</th>
                 </tr>
                 <c:forEach var="menu" items="${menus}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="menu_name"><c:out value="${menu.name}" /></td>
                         <td class="menu_price">${menu.price}円</td>
-                        <td class="order_number"><input type="number" name="number" value="1"></td>
-                        <td class="order_menu"><input type="checkbox" name="checkbox" value="${menu.id}"></td>
+                        <td class="menu_choice"><a href="<c:url value='orders/new?id=${menu.id}' />">選択する</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
         <br />
-        </form>
-
         <div id="pagination">
             （全 ${menus_count} 件）<br />
             <c:forEach var="i" begin="1" end="${((reports_count - 1) / 15) + 1}" step="1">

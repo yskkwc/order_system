@@ -125,20 +125,20 @@ table#menu_list th {
 }
 
 table#menu_list .menu_name {
-    width: 30%;
+    width: 36%;
     padding: 10px 2%;
 }
 table#menu_list .menu_price {
     width: 20%;
 }
 
-table#menu_list .menu_action {
+table#menu_list .menu_choice {
     width: 20%;
 }
 td.menu_price{
   text-align: right;
 }
-td.menu_action{
+td.menu_choice{
   text-align: center;
 }
 table.show_menu{

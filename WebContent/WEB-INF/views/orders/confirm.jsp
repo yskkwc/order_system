@@ -10,19 +10,17 @@
             </div>
         </c:if>
         <h1>注文の確認</h1><br />
-        <form method="GET" action="<c:url value='/orders/create' />">
+        <form method="POST" action="<c:url value='/orders/create' />">
         <table id="menu_list">
             <tbody>
                 <tr>
                     <th class="menu_name">メニュー名</th>
                     <th class="menu_price">値段</th>
-                    <th class="order_number">個数</th>
                 </tr>
                 <c:forEach var="menu" items="${menus}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="menu_name"><c:out value="${menu.name}" /></td>
                         <td class="menu_price">${menu.price}円</td>
-                        <td class="order_number">${number}</td>
                     </tr>
                 </c:forEach>
             </tbody>
