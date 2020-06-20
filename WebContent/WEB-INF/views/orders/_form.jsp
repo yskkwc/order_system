@@ -12,11 +12,11 @@
 </c:if>
 <br /><h3>注文メニュー</h3><br />
 <label for="menu_name">メニュー名</label><br />
-<input type="text" name="menu_name" readonly value="${menu.name}" />
+<input type="text" name="menu_name" value="${menu.name}" />
 <br /><br />
 
 <label for="price">値段</label><br />
-<input type="number" name="price" readonly value="${menu.price}" />円
+<input type="number" name="price" value="${menu.price}" />円
 <br /><br />
 
 <label for="content">個数の選択</label><br />
@@ -34,4 +34,4 @@
 <input type="tel" name="denwa" size="40" /><br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />
-<button type="submit">投稿</button>
+<a href="#" onclick="confirmOrder();"><button type="submit">注文する</button></a>

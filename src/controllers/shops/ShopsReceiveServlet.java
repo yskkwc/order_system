@@ -1,4 +1,4 @@
-package controllers.orders;
+package controllers.shops;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,16 +16,16 @@ import models.Shop;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class OrdersReceiveServlet
+ * Servlet implementation class ShopsReceiveServlet
  */
-@WebServlet("/orders/receive")
-public class OrdersReceiveServlet extends HttpServlet {
+@WebServlet("/shops/receive")
+public class ShopsReceiveServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public OrdersReceiveServlet() {
+    public ShopsReceiveServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,7 +34,6 @@ public class OrdersReceiveServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
      // DBに接続
         EntityManager em = DBUtil.createEntityManager();
 

@@ -54,6 +54,7 @@ public class OrdersCreateServlet extends HttpServlet {
         o.setAddress(request.getParameter("address"));
         o.setDenwa(request.getParameter("denwa"));
 
+
         List<String> errors = OrderValidator.validate(o);
         if(errors.size() > 0){
             em.close();
@@ -61,6 +62,9 @@ public class OrdersCreateServlet extends HttpServlet {
             request.setAttribute("_token", request.getSession().getId());
             request.setAttribute("order", o);
             request.setAttribute("errors", errors);
+            request.setAttribute("menu", o.getMenu());
+
+
 
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/orders/new.jsp");
             rd.forward(request, response);
@@ -72,7 +76,7 @@ public class OrdersCreateServlet extends HttpServlet {
 
             request.getSession().removeAttribute("shop_id");
             request.getSession().removeAttribute("menu_id");
-            request.getSession().setAttribute("flush", "注文を受付ました。");
+            request.getSession().setAttribute("flush", "注文を送信しました。");
 
             response.sendRedirect(request.getContextPath() + "/orders/shop");
             }

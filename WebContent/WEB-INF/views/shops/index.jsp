@@ -72,6 +72,6 @@
                 </c:choose>
             </c:forEach>
         </div><br />
-        <a href="<c:url value='/menus/index' />">メニュー一覧へ戻る</a>&nbsp;
+        <a href="<c:url value='/' />">メニュー一覧へ戻る</a>&nbsp;
   </c:param>
 </c:import>

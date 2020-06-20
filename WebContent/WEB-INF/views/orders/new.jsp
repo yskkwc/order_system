@@ -7,6 +7,14 @@
         <form method="POST" action="<c:url value='/orders/create' />">
             <c:import url="_form.jsp" />
         </form>
+        <script>
+                    function confirmOrder() {
+                        if(confirm("下記内容で注文します")) {
+                            document.forms[1].submit();
+                        }
+                    }
+
+                </script>
 
         <p><a href="<c:url value='/orders/shop' />">最初の画面に戻る</a></p>
     </c:param>

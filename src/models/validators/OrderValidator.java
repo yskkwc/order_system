@@ -58,7 +58,7 @@ public class OrderValidator {
 
     private static String _validateDenwa(String denwa) {
         if(denwa == null || denwa.equals("")) {
-            return "おところを入力してください。";
+            return "お電話番号を入力してください。";
             }
 
         return "";

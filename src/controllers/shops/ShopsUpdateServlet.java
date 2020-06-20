@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import models.Shop;
 import models.validators.ShopValidetor;
 import utils.DBUtil;
+import utils.EncryptUtil;
 
 /**
  * Servlet implementation class ShopsUpdateServlet
@@ -43,6 +44,12 @@ public class ShopsUpdateServlet extends HttpServlet {
             Shop s = em.find(Shop.class, (Integer) (request.getSession().getAttribute("shop_id")));
 
             s.setName(request.getParameter("name"));
+            s.setPassword(EncryptUtil.getPasswordEncrypt(
+                    request.getParameter("password"),
+                    (String)this.getServletContext().getAttribute("salt")
+                    )
+            );
+
             s.setEmail(request.getParameter("email"));
             s.setDenwa(request.getParameter("denwa"));
             s.setAddress(request.getParameter("address"));
