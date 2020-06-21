@@ -8,7 +8,6 @@
                 <form method="POST" action="<c:url value='/menus/update' />">
                     <c:import url="_form.jsp" />
                 </form>
-
                 <p><a href="#" onclick="confirmDestroy();">メニューを削除する</a></p>
                 <form method="POST" action="<c:url value='/menus/destroy' />">
                     <input type="hidden" name="_token" value="${_token}" />

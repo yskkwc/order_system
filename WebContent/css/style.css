@@ -97,8 +97,7 @@ table.shop_list td{
     padding-left: 3%;
     display: inline-block;
 }
-
-#employee_name {
+#shop_name {
     color: #cccccc;
     width: 36%;
     padding-right: 3%;
@@ -132,13 +131,13 @@ table#menu_list .menu_price {
     width: 20%;
 }
 
-table#menu_list .menu_choice {
+table#menu_list .menu_action {
     width: 20%;
 }
 td.menu_price{
   text-align: right;
 }
-td.menu_choice{
+td.menu_action{
   text-align: center;
 }
 table.show_menu{

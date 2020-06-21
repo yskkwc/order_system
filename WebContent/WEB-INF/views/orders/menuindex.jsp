@@ -16,13 +16,13 @@
                 <tr>
                     <th class="menu_name">メニュー名</th>
                     <th class="menu_price">値段</th>
-                    <th class="menu_choice">選択</th>
+                    <th class="menu_action">選択</th>
                 </tr>
                 <c:forEach var="menu" items="${menus}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td class="menu_name"><c:out value="${menu.name}" /></td>
                         <td class="menu_price">${menu.price}円</td>
-                        <td class="menu_choice"><a href="<c:url value='/orders/new?id=${menu.id}' />">選択する</a></td>
+                        <td class="menu_action"><a href="<c:url value='/orders/new?id=${menu.id}' />">注文へすすむ</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

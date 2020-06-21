@@ -84,7 +84,7 @@ public class OrdersCreateServlet extends HttpServlet {
 
             request.getSession().removeAttribute("shop_id");
             request.getSession().removeAttribute("menu_id");
-            request.getSession().setAttribute("flush", "注文を送信しました。");
+            request.getSession().setAttribute("flush", "注文を承りました。");
 
             response.sendRedirect(request.getContextPath() + "/orders/shop");
             }
