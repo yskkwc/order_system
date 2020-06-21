@@ -10,9 +10,9 @@
         <c:out value="${flush}"></c:out>
       </div>
     </c:if>
-    <h1>お店のページ</h1>
     <br />
-    <h2>メニュー一覧</h2>
+    <h1><c:out value="${shop_id.name}"/> さんの注文メニューページ</h1><br />
+    <h2>注文するメニューを選ぶ</h2>
     <table id="menu_list">
       <tbody>
         <tr>
