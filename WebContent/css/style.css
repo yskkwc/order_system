@@ -46,14 +46,10 @@ a {
 }
 
 button {
-  font-size: 14px;
+  font-size: 12px;
   padding: 5px 10px;
 }
 
-#footer {
-  text-align: left;
-  padding-left: 3%;
-}
 
 #flush_success {
   width: 100%;
@@ -278,7 +274,7 @@ p.footer{
     width: 100%;
     background-color: #89c7de;
     color: #fff;
-    text-align: left;
+    text-align: center;
     font-size: 40%;
     padding: 10px 0;
     position: absolute;/*←絶対位置*/
