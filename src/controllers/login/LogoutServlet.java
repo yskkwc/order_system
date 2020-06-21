@@ -26,7 +26,8 @@ public class LogoutServlet extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         request.getSession().removeAttribute("login_shop");
 
         request.getSession().setAttribute("flush", "ログアウトしました。");

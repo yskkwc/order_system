@@ -34,17 +34,18 @@ public class ShopsCreateServlet extends HttpServlet {
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         request.getSession().removeAttribute("login_shop");
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/toppage/toppage.jsp");
         rd.forward(request, response);
-        }
+    }
 
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String _token = (String)request.getParameter("_token");
-        if(_token != null && _token.equals(request.getSession().getId())) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String _token = (String) request.getParameter("_token");
+        if (_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
             Shop s = new Shop();
@@ -53,16 +54,14 @@ public class ShopsCreateServlet extends HttpServlet {
             s.setPassword(
                     EncryptUtil.getPasswordEncrypt(
                             request.getParameter("password"),
-                            (String)this.getServletContext().getAttribute("salt")
-                            )
-                    );
+                            (String) this.getServletContext().getAttribute("salt")));
             s.setEmail(request.getParameter("email"));
             s.setDenwa(request.getParameter("denwa"));
             s.setAddress(request.getParameter("address"));
             s.setArea(Integer.parseInt(request.getParameter("area")));
             s.setInfo(request.getParameter("info"));
 
-          //値をsetした変数rをバリデーション に通す
+            //値をsetした変数rをバリデーション に通す
             List<String> errors = ShopValidetor.validate(s, true, true);
             // エラーが検出されればDB閉じて値はs="shop",エラー情報はerrors="errors"
             // getId()は"_token"にしてnew.jspに返す

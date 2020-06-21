@@ -33,12 +33,13 @@ public class ShopsReceiveServlet extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     // DBに接続
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // DBに接続
         EntityManager em = DBUtil.createEntityManager();
 
         // "login_employee"を取り出す(LoginServletでセットしたやつ)
-        Shop login_shop = (Shop)request.getSession().getAttribute("login_shop");
+        Shop login_shop = (Shop) request.getSession().getAttribute("login_shop");
 
         int page;
         try {

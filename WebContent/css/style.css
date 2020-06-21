@@ -1,68 +1,80 @@
 @CHARSET "UTF-8";
-body {
 
-    color: #333333;
-    font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
+body {
+  color: #333333;
+  font-family: "Hiragino Kaku Gothic Pro", Meiryo, "MS PGothic", Helvetica,
+    Arial, sans-serif;
 }
+
 #header {
-    height: 70px;
-    background-color: #333333;
-    width: 100%;
-    margin-bottom: 5px;
+  height: 70px;
+  background-color: #89c7de;
+  width: 100%;
+  margin-bottom: 5px;
 }
+
 #content {
-    width: 94%;
-    margin: 40px;
-    padding-left: 3%;
+  width: 94%;
+  margin: 40px;
+  padding-left: 3%;
 }
+
 h1 {
   font-size: 24px;
   display: inline;
 }
+
 h2 {
-    font-size: 30px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+  font-size: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
+
 li {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
+
 p {
-    margin-top: 15px;
-    margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
+
 a {
-    text-decoration: none;
-    color: #24738e;
+  text-decoration: none;
+  color: #24738e;
 }
 
 button {
-    font-size: 14px;
-    padding: 5px 10px;
+  font-size: 14px;
+  padding: 5px 10px;
 }
+
 #footer {
-    text-align: left;
-    padding-left: 3%;
+  text-align: left;
+  padding-left: 3%;
 }
+
 #flush_success {
-    width: 100%;
-    padding-top: 10px;
-    padding-left: 2%;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    color: #155724;
-    background-color: #d4edda;
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 2%;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  color: #155724;
+  background-color: #d4edda;
 }
+
 #flush_error {
-    width: 100%;
-    padding-top: 10px;
-    padding-left: 2%;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    color: #721c24;
-    background-color: #f8d7da;
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 2%;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  color: #721c24;
+  background-color: #f8d7da;
 }
+
 table, th, td {
   border-collapse: collapse;
   border: 1px solid #ccc;
@@ -75,7 +87,7 @@ table.shop_list {
   vertical-align: top;
 }
 
-table.shop_list th{
+table.shop_list th {
   width: 20%;
   padding: 10px;
   font-weight: bold;
@@ -84,41 +96,40 @@ table.shop_list th{
   color: #ffffff;
 }
 
-table.shop_list td{
-
+table.shop_list td {
   width: 40%;
   padding: 10px;
   vertical-align: middle;
 }
 
 #header_menu {
-    width: 57%;
-    padding-top: 17px;
-    padding-left: 3%;
-    display: inline-block;
+  width: 57%;
+  padding-top: 17px;
+  padding-left: 3%;
+  display: inline-block;
 }
+
 #shop_name {
-    color: #cccccc;
-    width: 36%;
-    padding-right: 3%;
-    text-align: right;
-    display: inline-block;
+  color: #cccccc;
+  width: 36%;
+  padding-right: 3%;
+  text-align: right;
+  display: inline-block;
 }
 
 #header a {
-    color: #eeeeee;
+  color: #eeeeee;
 }
 
 h1 a {
-    color: #eeeeee;
+  color: #eeeeee;
 }
 
 table#menu_list {
   width: 90%;
-
 }
 
-table#menu_list th  {
+table#menu_list th {
   font-weight: bold;
   padding: 10px;
   font-weight: bold;
@@ -128,28 +139,35 @@ table#menu_list th  {
 }
 
 table#menu_list .menu_name {
-    width: 26%;
-    padding: 10px 2%;
+  width: 26%;
+  padding: 10px 2%;
 }
+
 table#menu_list .menu_price {
-    width: 10%;
+  width: 10%;
 }
+
 table#menu_list .menu_content {
-    width: 40%;
+  width: 40%;
 }
+
 table#menu_list .menu_action {
-    width: 15%;
+  width: 15%;
 }
-td.menu_price{
+
+td.menu_price {
   text-align: right;
 }
-td.menu_action{
+
+td.menu_action {
   text-align: center;
 }
-table.show_menu{
+
+table.show_menu {
   width: 70%;
 }
-table.show_menu th{
+
+table.show_menu th {
   width: 25%;
   padding: 10px;
   font-weight: bold;
@@ -157,20 +175,23 @@ table.show_menu th{
   background: #3f3f3f;
   color: #ffffff;
 }
-table.show_memu td{
-  width: 35%px;
+
+table.show_memu td {
+  width: 35% px;
   padding: 10px;
   vertical-align: top;
 }
 
 pre {
-    font-family: "Hiragino Kaku Gothic Pro",Meiryo,"MS PGothic",Helvetica,Arial,sans-serif;
+  font-family: "Hiragino Kaku Gothic Pro", Meiryo, "MS PGothic", Helvetica,
+    Arial, sans-serif;
 }
 
-table.usershop_list{
+table.usershop_list {
 
 }
-table.usershop_list th{
+
+table.usershop_list th {
   width: 150px;
   padding: 10px;
   font-weight: bold;
@@ -178,17 +199,18 @@ table.usershop_list th{
   background: #3f3f3f;
   color: #ffffff;
 }
-table.usershop_list td{
+
+table.usershop_list td {
   width: 150px;
   padding: 10px;
   vertical-align: top;
 }
 
-table#order_list{
+table#order_list {
   width: 77%;
-
 }
-table#order_list th{
+
+table#order_list th {
   width: 20%;
   padding: 10px;
   font-weight: bold;
@@ -196,25 +218,30 @@ table#order_list th{
   background: #3f3f3f;
   color: #ffffff;
 }
-table#order_list td{
+
+table#order_list td {
   width: 20%;
   padding: 10px;
   vertical-align: top;
 }
-table#order_list th.order_number{
-  width: 5%;
-}
-table#order_list td.order_number{
+
+table#order_list th.order_number {
   width: 5%;
 }
 
-table#order_list td.order_action{
+table#order_list td.order_number {
+  width: 5%;
+}
+
+table#order_list td.order_action {
   text-align: center;
 }
-table.order_menu{
+
+table.order_menu {
   width: 77%;
 }
-table.order_menu th{
+
+table.order_menu th {
   width: 8%;
   padding: 10px;
   font-weight: bold;
@@ -222,24 +249,38 @@ table.order_menu th{
   background: #3f3f3f;
   color: #ffffff;
 }
-table.order_menu td{
+
+table.order_menu td {
   width: 20%;
   padding: 10px;
   vertical-align: top;
 }
-table.user_info{
+
+table.user_info {
   width: 77%;
 }
-table.user_info th{
-    width: 8%;
+
+table.user_info th {
+  width: 8%;
   padding: 10px;
   font-weight: bold;
   vertical-align: center;
   background: #3f3f3f;
   color: #ffffff;
 }
-table.user_info td{
-    width: 20%;
+
+table.user_info td {
+  width: 20%;
   padding: 10px;
   vertical-align: top;
+}
+p.footer{
+    width: 100%;
+    background-color: #89c7de;
+    color: #fff;
+    text-align: left;
+    font-size: 40%;
+    padding: 10px 0;
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
 }

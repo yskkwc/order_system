@@ -34,10 +34,11 @@ public class ShopsUpdateServlet extends HttpServlet {
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         String _token = (String) request.getParameter("_token");
 
-     // 空チェック
+        // 空チェック
         if (_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
@@ -46,9 +47,7 @@ public class ShopsUpdateServlet extends HttpServlet {
             s.setName(request.getParameter("name"));
             s.setPassword(EncryptUtil.getPasswordEncrypt(
                     request.getParameter("password"),
-                    (String)this.getServletContext().getAttribute("salt")
-                    )
-            );
+                    (String) this.getServletContext().getAttribute("salt")));
 
             s.setEmail(request.getParameter("email"));
             s.setDenwa(request.getParameter("denwa"));

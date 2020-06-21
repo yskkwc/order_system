@@ -34,27 +34,29 @@ public class MenusCreateServlet extends HttpServlet {
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         request.getSession().removeAttribute("login_shop");
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/toppage/toppage.jsp");
         rd.forward(request, response);
-        }
+    }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String _token = (String)request.getParameter("_token");
-        if(_token != null && _token.equals(request.getSession().getId())) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String _token = (String) request.getParameter("_token");
+        if (_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
             Menu m = new Menu();
-            m.setShop((Shop)request.getSession().getAttribute("login_shop"));
+            m.setShop((Shop) request.getSession().getAttribute("login_shop"));
 
             m.setName(request.getParameter("name"));
             m.setPrice(Integer.parseInt(request.getParameter("price")));
             m.setContent(request.getParameter("content"));
 
             List<String> errors = MenuValidator.validate(m);
-            if(errors.size() > 0) {
+            if (errors.size() > 0) {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());

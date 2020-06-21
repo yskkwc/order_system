@@ -9,13 +9,14 @@ public class EncryptUtil {
     public static String getPasswordEncrypt(String plain_p, String salt) {
         String ret = "";
 
-        if(plain_p != null && !plain_p.equals("")) {
+        if (plain_p != null && !plain_p.equals("")) {
             byte[] bytes;
             String password = plain_p + salt;
             try {
                 bytes = MessageDigest.getInstance("SHA-256").digest(password.getBytes());
                 ret = DatatypeConverter.printHexBinary(bytes);
-            } catch(NoSuchAlgorithmException ex) {}
+            } catch (NoSuchAlgorithmException ex) {
+            }
         }
 
         return ret;

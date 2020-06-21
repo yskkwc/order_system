@@ -10,52 +10,50 @@ public class ShopValidetor {
         List<String> errors = new ArrayList<String>();
 
         String name_error = _validateName(s.getName());
-        if(!name_error.equals("")) {
+        if (!name_error.equals("")) {
             errors.add(name_error);
         }
 
         String password_error = _validatePassword(s.getPassword(), password_check_flag);
-        if(!password_error.equals("")) {
+        if (!password_error.equals("")) {
             errors.add(password_error);
         }
 
         String email_error = _validateEmail(s.getEmail());
-        if(!email_error.equals("")) {
+        if (!email_error.equals("")) {
             errors.add(email_error);
         }
 
         String denwa_error = _validateDenwa(s.getDenwa());
-        if(!denwa_error.equals("")) {
+        if (!denwa_error.equals("")) {
             errors.add(denwa_error);
         }
 
         String address_error = _validateAddress(s.getAddress());
-        if(!address_error.equals("")) {
+        if (!address_error.equals("")) {
             errors.add(address_error);
         }
 
         String area_error = _validateArea(s.getArea());
-        if(!area_error.equals("")) {
+        if (!area_error.equals("")) {
             errors.add(area_error);
         }
 
         return errors;
     }
 
-
-
     // 店舗名の入力チェック
     private static String _validateName(String name) {
-        if(name == null || name.equals("")) {
+        if (name == null || name.equals("")) {
             return "「お店の登録名」を入力してください。";
-            }
-        return "";
         }
+        return "";
+    }
 
     // パスワードの必須入力チェック
     private static String _validatePassword(String password, Boolean password_check_flag) {
         // パスワードを変更する場合のみ実行
-        if(password_check_flag && (password == null || password.equals(""))) {
+        if (password_check_flag && (password == null || password.equals(""))) {
             return "「パスワード」を入力してください。";
         }
         return "";

@@ -13,25 +13,19 @@ import javax.persistence.Table;
 
 @Table(name = "menus")
 @NamedQueries({
-    @NamedQuery(
-            name = "getAllMenus",
-            query = "SELECT m FROM Menu AS m ORDER BY m.id DESC"
-            ),
-    @NamedQuery(
-            name = "getMenusCount",
-            query = "SELECT COUNT(m) FROM Menu AS m"
-            ),
-    @NamedQuery(name = "getMyAllMenus", query = "SELECT m FROM Menu AS m WHERE m.shop "
-            + "= :shop ORDER BY m.id DESC"),
+        @NamedQuery(name = "getAllMenus", query = "SELECT m FROM Menu AS m ORDER BY m.id DESC"),
+        @NamedQuery(name = "getMenusCount", query = "SELECT COUNT(m) FROM Menu AS m"),
+        @NamedQuery(name = "getMyAllMenus", query = "SELECT m FROM Menu AS m WHERE m.shop "
+                + "= :shop ORDER BY m.id DESC"),
 
-    @NamedQuery(name = "getMyMenusCount", query = "SELECT COUNT(m) FROM Menu AS m WHERE m.shop "
-            + "= :shop"),
+        @NamedQuery(name = "getMyMenusCount", query = "SELECT COUNT(m) FROM Menu AS m WHERE m.shop "
+                + "= :shop"),
 
-    @NamedQuery(name = "getOrderMenus", query = "SELECT m FROM Menu AS m WHERE m.shop "
-            + "= :shop ORDER BY m.id DESC"),
+        @NamedQuery(name = "getOrderMenus", query = "SELECT m FROM Menu AS m WHERE m.shop "
+                + "= :shop ORDER BY m.id DESC"),
 
-    @NamedQuery(name = "getOrdersCount", query = "SELECT COUNT(m) FROM Menu AS m WHERE m.shop "
-            + "= :shop"),
+        @NamedQuery(name = "getOrdersCount", query = "SELECT COUNT(m) FROM Menu AS m WHERE m.shop "
+                + "= :shop"),
 })
 @Entity
 

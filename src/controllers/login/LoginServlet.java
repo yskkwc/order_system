@@ -33,11 +33,12 @@ public class LoginServlet extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         request.setAttribute("_token", request.getSession().getId());
         request.setAttribute("hasError", false);
 
-        if(request.getSession().getAttribute("flush") != null) {
+        if (request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
             request.getSession().removeAttribute("flush");
         }
@@ -50,7 +51,8 @@ public class LoginServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     // ログイン処理を実行
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         // 認証結果を格納する変数
         Boolean check_result = false;
 
@@ -59,30 +61,30 @@ public class LoginServlet extends HttpServlet {
 
         Shop s = null;
 
-        if(name != null && !name.equals("") && plain_pass != null && !plain_pass.equals("")) {
+        if (name != null && !name.equals("") && plain_pass != null && !plain_pass.equals("")) {
             EntityManager em = DBUtil.createEntityManager();
 
             String password = EncryptUtil.getPasswordEncrypt(
                     plain_pass,
-                    (String)this.getServletContext().getAttribute("salt")
-                    );
+                    (String) this.getServletContext().getAttribute("salt"));
 
             // 社員番号とパスワードが正しいかチェックする
             try {
                 s = em.createNamedQuery("checkRegisteredNameAndPassword", Shop.class)
-                      .setParameter("name", name)
-                      .setParameter("pass", password)
-                      .getSingleResult();
-            } catch(NoResultException ex) {}
+                        .setParameter("name", name)
+                        .setParameter("pass", password)
+                        .getSingleResult();
+            } catch (NoResultException ex) {
+            }
 
             em.close();
 
-            if(s != null) {
+            if (s != null) {
                 check_result = true;
             }
         }
 
-        if(!check_result) {
+        if (!check_result) {
             // 認証できなかったらログイン画面に戻る
             request.setAttribute("_token", request.getSession().getId());
             request.setAttribute("hasError", true);

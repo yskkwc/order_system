@@ -33,8 +33,9 @@ public class MenusUpdateServlet extends HttpServlet {
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     // edit.jspで参照してる_form.jsp内の"_token"
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // edit.jspで参照してる_form.jsp内の"_token"
         String _token = (String) request.getParameter("_token");
 
         // 空チェック

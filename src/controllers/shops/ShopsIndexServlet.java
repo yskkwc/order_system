@@ -32,47 +32,49 @@ public class ShopsIndexServlet extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
         Shop login_shop = (Shop) request.getSession().getAttribute("login_shop");
 
-        if(login_shop == null){
+        if (login_shop == null) {
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login/login.jsp");
             rd.forward(request, response);
 
-        }else{
+        } else {
 
-        int page = 1;
-        try{
-            page = Integer.parseInt(request.getParameter("page"));
-        } catch(NumberFormatException e) { }
-        List<Shop> shops = em.createNamedQuery("getMyAllShops", Shop.class)
-                                     .setParameter("id", login_shop.getId())
-                                     .setFirstResult(15 * (page - 1))
-                                     .setMaxResults(15)
-                                     .getResultList();
+            int page = 1;
+            try {
+                page = Integer.parseInt(request.getParameter("page"));
+            } catch (NumberFormatException e) {
+            }
+            List<Shop> shops = em.createNamedQuery("getMyAllShops", Shop.class)
+                    .setParameter("id", login_shop.getId())
+                    .setFirstResult(15 * (page - 1))
+                    .setMaxResults(15)
+                    .getResultList();
 
-        long shops_count = (long)em.createNamedQuery("getMyShopsCount", Long.class)
-                                     .setParameter("id", login_shop.getId())
-                                     .getSingleResult();
+            long shops_count = (long) em.createNamedQuery("getMyShopsCount", Long.class)
+                    .setParameter("id", login_shop.getId())
+                    .getSingleResult();
 
-        em.close();
+            em.close();
 
-        //index.jspに上で取得したデータを送る
-        request.setAttribute("shops", shops);
-        request.setAttribute("shops_count", shops_count);
-        request.setAttribute("page", page);
+            //index.jspに上で取得したデータを送る
+            request.setAttribute("shops", shops);
+            request.setAttribute("shops_count", shops_count);
+            request.setAttribute("page", page);
 
-        //フラッシュメッセージ
-        if (request.getSession().getAttribute("flush") != null) {
-            request.setAttribute("flush", request.getSession().getAttribute("flush"));
-            request.getSession().removeAttribute("flush");
+            //フラッシュメッセージ
+            if (request.getSession().getAttribute("flush") != null) {
+                request.setAttribute("flush", request.getSession().getAttribute("flush"));
+                request.getSession().removeAttribute("flush");
+            }
+
+            //送り先の指定(リクエストスコープは受け/取る、一回まで)
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/shops/index.jsp");
+            rd.forward(request, response);
         }
-
-        //送り先の指定(リクエストスコープは受け/取る、一回まで)
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/shops/index.jsp");
-        rd.forward(request, response);
     }
-}
 }

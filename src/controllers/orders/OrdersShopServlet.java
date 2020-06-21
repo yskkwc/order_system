@@ -32,25 +32,26 @@ public class OrdersShopServlet extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
         int page = 1;
-        try{
+        try {
             page = Integer.parseInt(request.getParameter("page"));
-        } catch(NumberFormatException e) { }
+        } catch (NumberFormatException e) {
+        }
         List<Shop> shops = em.createNamedQuery("getAllShops", Shop.class)
-                                     .setFirstResult(15 * (page - 1))
-                                     .setMaxResults(15)
-                                     .getResultList();
+                .setFirstResult(15 * (page - 1))
+                .setMaxResults(15)
+                .getResultList();
 
-        long shops_count = (long)em.createNamedQuery("getShopsCount", Long.class)
+        long shops_count = (long) em.createNamedQuery("getShopsCount", Long.class)
 
-                                     .getSingleResult();
+                .getSingleResult();
 
         em.close();
 
-        //index.jspに上で取得したデータを送る
         request.setAttribute("shops", shops);
         request.setAttribute("shops_count", shops_count);
         request.setAttribute("page", page);
@@ -61,7 +62,6 @@ public class OrdersShopServlet extends HttpServlet {
             request.getSession().removeAttribute("flush");
         }
 
-        //送り先の指定(リクエストスコープは受け/取る、一回まで)
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/orders/shopindex.jsp");
         rd.forward(request, response);
     }

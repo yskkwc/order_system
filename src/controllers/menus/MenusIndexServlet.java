@@ -33,26 +33,27 @@ public class MenusIndexServlet extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
         Shop login_shop = (Shop) request.getSession().getAttribute("login_shop");
 
         int page;
-        try{
+        try {
             page = Integer.parseInt(request.getParameter("page"));
-        } catch(Exception e) {
+        } catch (Exception e) {
             page = 1;
         }
         List<Menu> menus = em.createNamedQuery("getMyAllMenus", Menu.class)
-                                  .setParameter("shop", login_shop)
-                                  .setFirstResult(15 * (page - 1))
-                                  .setMaxResults(15)
-                                  .getResultList();
+                .setParameter("shop", login_shop)
+                .setFirstResult(15 * (page - 1))
+                .setMaxResults(15)
+                .getResultList();
 
-        long menus_count = (long)em.createNamedQuery("getMyMenusCount", Long.class)
-                                    .setParameter("shop", login_shop)
-                                    .getSingleResult();
+        long menus_count = (long) em.createNamedQuery("getMyMenusCount", Long.class)
+                .setParameter("shop", login_shop)
+                .getSingleResult();
 
         em.close();
 
@@ -62,7 +63,7 @@ public class MenusIndexServlet extends HttpServlet {
         request.setAttribute("page", page);
         request.setAttribute("login_shop", login_shop);
 
-        if(request.getSession().getAttribute("flush") != null) {
+        if (request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
             request.getSession().removeAttribute("flush");
         }

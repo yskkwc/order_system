@@ -38,34 +38,31 @@ public class LoginFilter implements Filter {
     /**
      * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
      */
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        String context_path = ((HttpServletRequest)request).getContextPath();
-        String servlet_path = ((HttpServletRequest)request).getServletPath();
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        String context_path = ((HttpServletRequest) request).getContextPath();
+        String servlet_path = ((HttpServletRequest) request).getServletPath();
 
         // CSSフォルダ内は認証処理から除外する
-        if(!servlet_path.matches("/css.*") && !servlet_path.matches("/orders.*")) {
-            HttpSession session = ((HttpServletRequest)request).getSession();
+        if (!servlet_path.matches("/css.*") && !servlet_path.matches("/orders.*")) {
+            HttpSession session = ((HttpServletRequest) request).getSession();
 
-            // セッションスコープに保存されたユーザ情報を取得
+            // セッションスコープに保存されたlogin_shopを取得
+            Shop s = (Shop) session.getAttribute("login_shop");
 
-            Shop s = (Shop)session.getAttribute("login_shop");
+            if (!servlet_path.equals("/login") && !servlet_path.equals("/shops/new")
+                    && !servlet_path.equals("/shops/create")) {
 
-            if(!servlet_path.equals("/login") && !servlet_path.equals("/shops/new") && !servlet_path.equals("/shops/create")) {
-                // ログイン画面以外について
-                // ログアウトしている状態であれば
-                // ログイン画面にリダイレクト
-                if(s == null) {
-                    ((HttpServletResponse)response).sendRedirect(context_path + "/login");
+                if (s == null) {
+                    ((HttpServletResponse) response).sendRedirect(context_path + "/login");
 
                     return;
                 }
 
             } else {
-                // ログイン画面について
-                // ログインしているのにログイン画面を表示させようとした場合は
-                // システムのトップページにリダイレクト
-                if(s != null) {
-                    ((HttpServletResponse)response).sendRedirect(context_path + "/menus/index");
+
+                if (s != null) {
+                    ((HttpServletResponse) response).sendRedirect(context_path + "/menus/index");
 
                     return;
                 }

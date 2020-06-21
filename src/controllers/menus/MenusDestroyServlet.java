@@ -30,17 +30,18 @@ public class MenusDestroyServlet extends HttpServlet {
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String _token = (String)request.getParameter("_token");
-        if(_token != null && _token.equals(request.getSession().getId())) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String _token = (String) request.getParameter("_token");
+        if (_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
             // セッションスコープからIDを取得して
             // 該当のIDの1件のみをデータベースから取得
-            Menu m = em.find(Menu.class, (Integer)(request.getSession().getAttribute("menu_id")));
+            Menu m = em.find(Menu.class, (Integer) (request.getSession().getAttribute("menu_id")));
 
             em.getTransaction().begin();
-            em.remove(m);       // データ削除
+            em.remove(m); // データ削除
             em.getTransaction().commit();
 
             request.getSession().setAttribute("flush", "削除が完了しました。");
@@ -51,5 +52,5 @@ public class MenusDestroyServlet extends HttpServlet {
 
             response.sendRedirect(request.getContextPath() + "/");
         }
-}
+    }
 }
