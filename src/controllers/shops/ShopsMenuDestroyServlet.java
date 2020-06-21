@@ -1,4 +1,4 @@
-package controllers.menus;
+package controllers.shops;
 
 import java.io.IOException;
 
@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Menu;
+import models.Order;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class MenusDestroyServlet
+ * Servlet implementation class ShopsMenuDestroyServlet
  */
-@WebServlet("/menus/destroy")
-public class MenusDestroyServlet extends HttpServlet {
+@WebServlet("/shops/menudestroy")
+public class ShopsMenuDestroyServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MenusDestroyServlet() {
+    public ShopsMenuDestroyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,17 +37,17 @@ public class MenusDestroyServlet extends HttpServlet {
 
             // セッションスコープからIDを取得して
             // 該当のIDの1件のみをデータベースから取得
-            Menu m = em.find(Menu.class, (Integer)(request.getSession().getAttribute("menu_id")));
+            Order o = em.find(Order.class, (Integer)(request.getSession().getAttribute("order_id")));
 
             em.getTransaction().begin();
-            em.remove(m);       // データ削除
+            em.remove(o);       // データ削除
             em.getTransaction().commit();
 
-            request.getSession().setAttribute("flush", "削除が完了しました。");
+            request.getSession().setAttribute("flush", "受注データを削除しました。");
 
             em.close();
 
-            request.getSession().removeAttribute("menu_id");
+            request.getSession().removeAttribute("order_id");
 
             response.sendRedirect(request.getContextPath() + "/");
         }

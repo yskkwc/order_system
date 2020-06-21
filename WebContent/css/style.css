@@ -114,25 +114,31 @@ h1 a {
 }
 
 table#menu_list {
-  width: 80%;
+  width: 90%;
 
 }
 
-table#menu_list th {
-    font-weight: bold;
-    padding: 10px 2%;
+table#menu_list th  {
+  font-weight: bold;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  background: #3f3f3f;
+  color: #ffffff;
 }
 
 table#menu_list .menu_name {
-    width: 36%;
+    width: 26%;
     padding: 10px 2%;
 }
 table#menu_list .menu_price {
-    width: 20%;
+    width: 10%;
 }
-
+table#menu_list .menu_content {
+    width: 40%;
+}
 table#menu_list .menu_action {
-    width: 20%;
+    width: 15%;
 }
 td.menu_price{
   text-align: right;
@@ -141,10 +147,10 @@ td.menu_action{
   text-align: center;
 }
 table.show_menu{
-  width: 45%;
+  width: 70%;
 }
 table.show_menu th{
-  width: 150px;
+  width: 25%;
   padding: 10px;
   font-weight: bold;
   vertical-align: top;
@@ -152,7 +158,7 @@ table.show_menu th{
   color: #ffffff;
 }
 table.show_memu td{
-  width: 150px;
+  width: 35%px;
   padding: 10px;
   vertical-align: top;
 }
@@ -174,6 +180,66 @@ table.usershop_list th{
 }
 table.usershop_list td{
   width: 150px;
+  padding: 10px;
+  vertical-align: top;
+}
+
+table#order_list{
+  width: 77%;
+
+}
+table#order_list th{
+  width: 20%;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: center;
+  background: #3f3f3f;
+  color: #ffffff;
+}
+table#order_list td{
+  width: 20%;
+  padding: 10px;
+  vertical-align: top;
+}
+table#order_list th.order_number{
+  width: 5%;
+}
+table#order_list td.order_number{
+  width: 5%;
+}
+
+table#order_list td.order_action{
+  text-align: center;
+}
+table.order_menu{
+  width: 77%;
+}
+table.order_menu th{
+  width: 8%;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: center;
+  background: #3f3f3f;
+  color: #ffffff;
+}
+table.order_menu td{
+  width: 20%;
+  padding: 10px;
+  vertical-align: top;
+}
+table.user_info{
+  width: 77%;
+}
+table.user_info th{
+    width: 8%;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: center;
+  background: #3f3f3f;
+  color: #ffffff;
+}
+table.user_info td{
+    width: 20%;
   padding: 10px;
   vertical-align: top;
 }

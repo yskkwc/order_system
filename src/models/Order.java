@@ -19,15 +19,17 @@ import javax.persistence.Table;
             name = "getAllOrders",
             query = "SELECT o FROM Order AS o ORDER BY o.id DESC"
             ),
+
     @NamedQuery(
             name = "getAllOrdersCount",
             query = "SELECT COUNT(o) FROM Order AS o"
             ),
+
     @NamedQuery(name = "getMyAllOrdersReceive", query = "SELECT o FROM Order AS o WHERE o.shop "
             + "= :shop ORDER BY o.id DESC"),
 
     @NamedQuery(name = "getMyOrdersReceiveCount", query = "SELECT COUNT(o) FROM Order AS o WHERE o.shop "
-            + "= :shop"),
+            + "= :shop")
 })
 @Entity
 public class Order {
