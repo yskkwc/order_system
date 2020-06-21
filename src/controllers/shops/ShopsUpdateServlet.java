@@ -61,7 +61,7 @@ public class ShopsUpdateServlet extends HttpServlet {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("report", s);
+                request.setAttribute("shop", s);
                 request.setAttribute("errors", errors);
 
                 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/shops/edit.jsp");

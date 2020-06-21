@@ -19,14 +19,15 @@
                 </tr>
                 <c:forEach var="menu" items="${menus}" varStatus="status">
                     <tr class="row${status.count % 2}">
-                        <td class="menu_name"><c:out value="${order.name}" /></td>
-                        <td class="menu_price">${order.address}円</td>
+                        <td class="menu_name"><c:out value="${orders.manu.name}" /></td>
+                        <td class="menu_price">${orders.address}円</td>
                         <td class="menu_action"><a href="<c:url value='/menus/show?id=${menu.id}' />">詳細を見る・変更する</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
-
+        <c:out value="${order.address}"/>
+        <c:out value="${shop.name}"/>
         <div id="pagination">
             （全 ${menus_count} 件）<br />
             <c:forEach var="i" begin="1" end="${((reports_count - 1) / 15) + 1}" step="1">

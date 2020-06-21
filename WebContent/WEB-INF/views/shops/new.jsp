@@ -6,7 +6,6 @@
         <p>以下の空欄を埋めてください<br>
         ※備考欄はかんたんなお店の紹介に使えます。空欄でも構いません。<br>
         ※登録名とパスワードはログインに使いますので控えを取ってください。</p>
-
         <form method="POST" action="<c:url value='/shops/create' />">
             <c:import url="_form.jsp" />
         </form>

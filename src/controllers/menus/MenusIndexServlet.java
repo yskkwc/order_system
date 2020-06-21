@@ -60,6 +60,7 @@ public class MenusIndexServlet extends HttpServlet {
         request.setAttribute("menus", menus);
         request.setAttribute("menus_count", menus_count);
         request.setAttribute("page", page);
+        request.setAttribute("login_shop", login_shop);
 
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));

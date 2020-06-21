@@ -38,7 +38,7 @@ public class ShopsReceiveServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
 
         // "login_employee"を取り出す(LoginServletでセットしたやつ)
-        Shop login_shop = (Shop) request.getSession().getAttribute("login_shop");
+        Shop s = em.find(Shop.class, Integer.parseInt(request.getParameter("id")));
 
         int page;
         try {
@@ -47,13 +47,13 @@ public class ShopsReceiveServlet extends HttpServlet {
             page = 1;
         }
         List<Order> orders = em.createNamedQuery("getMyAllOrdersReceive", Order.class)
-                .setParameter("shop", login_shop)
+                .setParameter("shop", s)
                 .setFirstResult(15 * (page - 1))
                 .setMaxResults(15)
                 .getResultList();
 
         long orders_count = (long) em.createNamedQuery("getMyOrdersReceiveCount", Long.class)
-                .setParameter("shop", login_shop)
+                .setParameter("shop", s)
                 .getSingleResult();
 
         em.close();
