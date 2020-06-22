@@ -71,7 +71,7 @@ public class MenusUpdateServlet extends HttpServlet {
                 em.getTransaction().begin();
                 em.getTransaction().commit();
                 em.close();
-                request.getSession().setAttribute("flush", "更新が完了しました。");
+                request.getSession().setAttribute("flush", "メニューの更新が完了しました。");
 
                 // セッションスコープを除外
                 request.getSession().removeAttribute("menu_id");

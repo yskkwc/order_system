@@ -76,7 +76,7 @@ public class MenusCreateServlet extends HttpServlet {
                 em.persist(m);
                 em.getTransaction().commit();
                 em.close();
-                request.getSession().setAttribute("flush", "登録が完了しました。");
+                request.getSession().setAttribute("flush", "メニューの登録が完了しました。");
 
                 response.sendRedirect(request.getContextPath() + "/");
             }
