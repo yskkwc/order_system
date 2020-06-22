@@ -52,7 +52,13 @@ public class MenusCreateServlet extends HttpServlet {
             m.setShop((Shop) request.getSession().getAttribute("login_shop"));
 
             m.setName(request.getParameter("name"));
+
+            if(request.getParameter("price").equals("")){
+                m.setPrice(-1);
+            }else{
             m.setPrice(Integer.parseInt(request.getParameter("price")));
+            }
+
             m.setContent(request.getParameter("content"));
 
             List<String> errors = MenuValidator.validate(m);

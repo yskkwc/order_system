@@ -46,7 +46,13 @@ public class MenusUpdateServlet extends HttpServlet {
             Menu m = em.find(Menu.class, (Integer) (request.getSession().getAttribute("menu_id")));
 
             m.setName(request.getParameter("name"));
+
+            if(request.getParameter("price").equals("")){
+                m.setPrice(-1);
+            }else{
             m.setPrice(Integer.parseInt(request.getParameter("price")));
+            }
+
             m.setContent(request.getParameter("content"));
 
             //値をsetした変数rをバリデーション に通す

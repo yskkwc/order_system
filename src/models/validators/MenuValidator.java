@@ -30,7 +30,7 @@ public class MenuValidator {
     }
 
     private static String _validatePrice(Integer price) {
-        if (price == null || price.equals("")) {
+        if (price == -1 || price.equals("")) {
             return "お値段を設定してください。";
         }
 
