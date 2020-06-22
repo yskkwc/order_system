@@ -44,9 +44,7 @@
           </tr>
           <tr class="row${status.count % 2}">
             <th>情報</th>
-            <td><pre>
-                <c:out value="${shop.info}" />
-              </pre></td>
+            <td><pre><c:out value="${shop.info}" /></pre></td>
           </tr>
           <tr class="row${status.count % 2}">
             <th>編集</th>
