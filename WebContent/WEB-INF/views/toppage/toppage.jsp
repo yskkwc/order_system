@@ -11,7 +11,7 @@
         <c:out value="${flush}"></c:out>
       </div>
     </c:if>
-    <h2>注文をはじめる</h2>
+    <h2>注文をはじめる!</h2>
     <br />
     <a href="<c:url value='/orders/shop' />">
       <button type="button">注文する</button>

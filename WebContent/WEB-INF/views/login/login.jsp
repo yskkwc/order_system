@@ -32,7 +32,37 @@
       <button type="submit">ログイン</button>
     </form>
     <br />
-    <br />
+    <p>＊ポートフォリオ用プリセットアカウントログイン＊</p>
+    <form method="POST" action="<c:url value='/login' />">
+    <input type="hidden" name="name" value="テストアカウント" />
+    <input type="hidden" name="password" value="admin" />
+    <input type="hidden" name="_token" value="${_token}" />
+    <button type="submit">テストアカウント</button>
+    </form>
+    <form method="POST" action="<c:url value='/login' />">
+    <input type="hidden" name="name" value="ラーメン店" />
+    <input type="hidden" name="password" value="ramen" />
+    <input type="hidden" name="_token" value="${_token}" />
+    <button type="submit">ラーメン店</button>
+    </form>
+    <form method="POST" action="<c:url value='/login' />">
+    <input type="hidden" name="name" value="パスタ店" />
+    <input type="hidden" name="password" value="pasta" />
+    <input type="hidden" name="_token" value="${_token}" />
+    <button type="submit">パスタ店</button>
+    </form>
+    <form method="POST" action="<c:url value='/login' />">
+    <input type="hidden" name="name" value="ハンバーグ店" />
+    <input type="hidden" name="password" value="hamberg" />
+    <input type="hidden" name="_token" value="${_token}" />
+    <button type="submit">ハンバーグ店</button>
+    </form>
+    <form method="POST" action="<c:url value='/login' />">
+    <input type="hidden" name="name" value="居酒屋" />
+    <input type="hidden" name="password" value="izakaya" />
+    <input type="hidden" name="_token" value="${_token}" />
+    <button type="submit">居酒屋</button>
+    </form><br/><br/>
 
     <h3>お店を新規登録する！</h3>
     <br />
