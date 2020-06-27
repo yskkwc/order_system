@@ -1,5 +1,2 @@
-<<<<<<< HEAD
-# aaaaaa
-=======
 # order_system
 >>>>>>> origin/master
