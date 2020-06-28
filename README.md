@@ -1,5 +1,4 @@
 # order_system
->>>>>>> origin/master
 the software will be used to the order from customer to shopuser.
 
 # Descriotion
@@ -42,3 +41,4 @@ This software is released under the MIT License, see LICENSE.
 y.kawachi
 https://github.com/yskkwc
 
+>>>>>>> origin/master
