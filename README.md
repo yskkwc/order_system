@@ -15,25 +15,25 @@ $ cd order_system
 
 # Dependency
 Java/Servlet/for Eclipse
-HTML5/css
+HTML5/css<br/>
 <groupId>mysql</groupId>
 <artifactId>mysql-connector-java</artifactId>
 <version>5.1.45</version>
-</dependency>
+</dependency><br/>
 <dependency>
 <groupId>org.hibernate</groupId>
 <artifactId>hibernate-core</artifactId>
 <version>5.2.13.Final</version>
-</dependency>
+</dependency><br/>
 <dependency>
 <groupId>org.apache.taglibs</groupId>
 <artifactId>taglibs-standard-impl</artifactId>
 <version>1.2.5</version>
-</dependency>
+</dependency><br/>
 <dependency>
 <groupId>javax.servlet.jsp.jstl</groupId>
 <artifactId>javax.servlet.jsp.jstl-api</artifactId>
-<version>1.2.1</version>
+<version>1.2.1</version><br/>
 
 # License
 This software is released under the MIT License, see LICENSE.
