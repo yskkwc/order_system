@@ -10,7 +10,7 @@ On the other hand, if you want to regist your shop, you may fill in your shop in
 Your info will be released in this application only.
 
 # Usage
-$ git clone https://github.com/yskkwc/order_system.git
+$ git clone https://github.com/yskkwc/order_system.git<br/>
 $ cd order_system
 
 # Dependency
